@@ -1,7 +1,4 @@
-import React from "react";
-
-
-// const FaUserTie = contactDetails[1];
+import { memo } from "react";
 
 const ContactCard = ({ data }) => {
   return (
@@ -11,4 +8,4 @@ const ContactCard = ({ data }) => {
   );
 };
 
-export default ContactCard;
+export default memo(ContactCard);

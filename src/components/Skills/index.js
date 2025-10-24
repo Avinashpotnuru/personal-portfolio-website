@@ -24,7 +24,7 @@ const SkillsComponent = () => {
         >
           Skills
         </motion.h1>
-        <div className="grid w-full grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
+        <div className="grid w-full grid-cols-3 sm:grid-cols-5 lg:grid-cols-8">
           {Array.isArray(skillsData) && skillsData.length > 0
             ? skillsData.map((item, idx) => (
                 <motion.div
@@ -39,10 +39,11 @@ const SkillsComponent = () => {
                   className="flex flex-col items-center justify-center p-9"
                 >
                   <Image
-                    width={120}
-                    height={120}
+                    width={40}
+                    height={40}
                     src={`/skills/skills${idx + 1}.png`}
                     alt={`skills${idx + 1}`}
+                    priority
                   />
                   <h1 className="my-2 font-semibold text-center">{item}</h1>
                 </motion.div>

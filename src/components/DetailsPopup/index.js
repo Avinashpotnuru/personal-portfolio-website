@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 // import axios from "axios";
 import Modal from "../UI/Model";
 import emailjs from "@emailjs/browser";
@@ -7,7 +7,7 @@ import emailjs from "@emailjs/browser";
 import { AiOutlineClose } from "react-icons/ai";
 import { closeDetailsPopup } from "@/src/store/slices/popup";
 import { useDispatch, useSelector } from "react-redux";
-import {  toast } from "react-toastify";
+import { toast } from "react-toastify";
 import Image from "next/image";
 
 const DetailsPopup = () => {
@@ -42,7 +42,7 @@ const DetailsPopup = () => {
         },
         (error) => {
           setLoading(false);
-          console.log(error.text);
+          console.warn(error);
           toast.error("Failed to send details");
         }
       );
@@ -92,6 +92,7 @@ const DetailsPopup = () => {
             <Image
               width={200}
               height={200}
+              priority
               alt="img1"
               src="https://t3.ftcdn.net/jpg/02/91/52/22/360_F_291522205_XkrmS421FjSGTMRdTrqFZPxDY19VxpmL.jpg"
             />

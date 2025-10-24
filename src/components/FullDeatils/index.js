@@ -1,10 +1,25 @@
+import dynamic from "next/dynamic";
 import React, { useCallback, useState } from "react";
 
-import Experience from "../Experience";
-import Skills from "../Skills";
-import Education from "../Education";
-import TabButton from "../TabButton";
+const Experience = dynamic(() => import("../Experience"), {
+  ssr: false,
+  loading: () => <p>Loading...</p>,
+});
 
+const Skills = dynamic(() => import("../Skills"), {
+  ssr: false,
+  loading: () => <p>Loading...</p>,
+});
+
+const Education = dynamic(() => import("../Education"), {
+  ssr: false,
+  loading: () => <p>Loading...</p>,
+});
+
+const TabButton = dynamic(() => import("../TabButton"), {
+  ssr: false,
+  loading: () => <p>Loading...</p>,
+});
 
 const tabs = [
   { id: 1, label: "Experience", component: <Experience /> },
@@ -14,6 +29,11 @@ const tabs = [
 
 const FullDetails = () => {
   const [selectedTabIndex, setSelectedTabIndex] = useState(1);
+
+  const tabComponents = tabs.reduce((tabComponents, tab) => {
+    tabComponents[tab.id] = tab.component;
+    return tabComponents;
+  }, {});
 
   const handleTabClick = useCallback((index) => {
     setSelectedTabIndex(index);
@@ -32,9 +52,7 @@ const FullDetails = () => {
           />
         ))}
       </div>
-      <div className="tab-content">
-        {tabs.find((tab) => selectedTabIndex === tab.id)?.component}
-      </div>
+      <div className="tab-content">{tabComponents[selectedTabIndex]}</div>
     </div>
   );
 };

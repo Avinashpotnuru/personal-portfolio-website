@@ -24,6 +24,7 @@ const ProjectDetailPage = ({ data }) => {
             className="w-[95%] h-full  sm:h-auto  sm:my-auto  mx-auto object-fill "
             src={data.imgUrl}
             alt={data?.title}
+            priority
           />
         </div>
         <div className="sm:w-1/2 sm:px-10 ">
@@ -37,7 +38,6 @@ const ProjectDetailPage = ({ data }) => {
           <div className=" w-[90%] mx-auto overflow-x-auto overflow-desk  ">
             <div className="flex space-x-4  w-[120%] sm:w-full mx-auto  py-2 ">
               {data?.technologies.map((val, idx) => {
-                console.log("val", val);
                 return (
                   <div
                     className="my-auto hover:text-[#06b6d4] text-[60px] hover:scale-110 hover:-translate-y-1 transition duration-150 ease-in-out"

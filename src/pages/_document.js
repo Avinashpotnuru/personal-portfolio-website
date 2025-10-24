@@ -1,5 +1,4 @@
 import { Html, Head, Main, NextScript } from "next/document";
-// import Fade from "../components/Fade";
 
 export default function Document() {
   return (

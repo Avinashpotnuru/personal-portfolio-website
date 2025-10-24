@@ -1,9 +1,8 @@
-import React, { memo } from "react";
+import { memo } from "react";
 import { FaSchool, FaCalendarAlt } from "react-icons/fa";
 import { HiAcademicCap } from "react-icons/hi";
 import { motion } from "framer-motion";
 import { TiLocation } from "react-icons/ti";
-
 
 const EducationDetailComponent = ({ val, idx }) => (
   <motion.div
@@ -36,4 +35,3 @@ const EducationDetailComponent = ({ val, idx }) => (
 
 const EducationDetail = memo(EducationDetailComponent);
 export default EducationDetail;
-

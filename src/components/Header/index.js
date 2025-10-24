@@ -1,10 +1,6 @@
 import Link from "next/link";
-
 import React, { useState } from "react";
-
-// third party imports
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
-
 import { RiInformationLine, RiContactsBookLine } from "react-icons/ri";
 import { FaRegUser } from "react-icons/fa";
 import { motion } from "framer-motion";
@@ -15,7 +11,7 @@ import TextContainer from "../TextAnimationContainer";
 
 const Header = () => {
   const path = usePathname();
-  // console.log(path);
+
   let Links = [
     { name: "HOME", link: "/", icon: <FaRegUser /> },
     { name: "ABOUT", link: "/about", icon: <RiInformationLine /> },
@@ -28,13 +24,11 @@ const Header = () => {
   ];
   let [open, setOpen] = useState(false);
 
-  // const openToggle = useSelector((state) => state.headerPopup.status);
   return (
     <div className="relative w-full shadow-md ">
       <div className="fixed top-0 left-0 right-0 z-10 flex items-center justify-between py-4 bg-white md:px-10 px-7">
         <div
-          className="font-bold text-2xl cursor-pointer flex items-center font-[Poppins] 
-  text-gray-800"
+          className="font-bold text-2xl cursor-pointer flex items-center font-[Poppins]  text-gray-800"
         >
           <Link href={"/"}>
             <TextContainer

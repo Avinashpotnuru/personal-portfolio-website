@@ -1,20 +1,19 @@
-// const inter = Inter({ subsets: ["latin"] });
+import dynamic from "next/dynamic";
 
-// import components
-
-import About from "../components/About";
-
-import MyProjects from "../components/MyProjects";
-
-// import Fade from "../components/Fade";
+const About = dynamic(() => import("../components/About"), {
+  ssr: false,
+  loading: () => <p>Loading...</p>,
+});
+const MyProjects = dynamic(() => import("../components/MyProjects"), {
+  ssr: false,
+  loading: () => <p>Loading...</p>,
+});
 
 export default function Home() {
   return (
-    <>
-      <div className="mt-24 ">
-        <About />
-        <MyProjects />
-      </div>
-    </>
+    <div className="mt-24 ">
+      <About />
+      <MyProjects />
+    </div>
   );
 }

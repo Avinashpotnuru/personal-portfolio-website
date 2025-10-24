@@ -1,9 +1,6 @@
 import Image from "next/image";
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-
-// third party imports
-
 import { motion } from "framer-motion";
 import TextContainer from "../TextAnimationContainer";
 
@@ -30,7 +27,7 @@ const About = () => {
 
         <h1 className="my-1 text-xl font-medium lg:my-2">FrontEnd Developer</h1>
         <h1 className="my-1 text-base">
-          Hi, I&apos;m Avinash Potnuru, a Frontend Developer with 4.4 years of
+          Hi, I&apos;m Avinash Potnuru, a Frontend Developer with 5+ years of
           experience building fast, responsive, and user-focused web
           applications. I specialize in React.js, Next.js, TypeScript, Tailwind
           CSS, and Material UI, and I create clean, accessible UIs with a focus
@@ -65,14 +62,15 @@ const About = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 1, staggerChildren: 0.08 }}
-          className="md:border-2 md:border-black md:rounded-[50%] md:h-[400px] md:w-[400px] lg:h-[440px] lg:w-[440px] flex justify-center items-center"
+          className=" md:rounded-[50%] md:h-[400px] md:w-[400px] lg:h-[440px] lg:w-[440px] flex justify-center items-center"
         >
           <Image
-            className="w-[90%] sm-[95%] md:h-[380px] md:w-[380px] lg:h-[400px] lg:w-[400px] mx-auto"
-            src="/certificates/profile-pic (2).png"
-            alt="myImage"
+            src="/certificates/profile-pic1.png"
+            alt="Profile picture"
             width={400}
             height={400}
+            priority
+            decoding="async"
           />
         </motion.div>
       </motion.div>

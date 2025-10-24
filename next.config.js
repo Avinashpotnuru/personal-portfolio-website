@@ -4,6 +4,9 @@ const nextConfig = {
   images: {
     unoptimized: true, // for Netlify compatibility
   },
+  eslint: {
+    ignoreDuringBuilds: false,
+  },
 };
 
 module.exports = nextConfig
