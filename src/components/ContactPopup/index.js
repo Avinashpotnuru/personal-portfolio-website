@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { DevTool } from "@hookform/devtools";
 import { useSelector, useDispatch } from "react-redux";
 import Modal from "../UI/Model";
 import { motion } from "framer-motion";
@@ -26,26 +25,21 @@ const inputVariants = {
 
 const ContactPopup = () => {
   const dispatch = useDispatch();
-  const { register, handleSubmit, reset, formState, control } = useForm();
+  const { register, handleSubmit, reset, formState } = useForm();
 
   const { errors } = formState;
-  // console.log("form state", formState);
-
-  // console.log("err", errors);
 
   const [, setData] = useState("");
   const contactToggle = useSelector(
     (state) => state.popSlice.contactPopup.status
   );
-  // console.log(contactToggle);
 
   const validatePhoneNumber = (value) => {
-    const phoneNumber = value?.replace(/[^0-9]/g, ""); // Remove non-digit characters
+    const phoneNumber = value?.replace(/[^0-9]/g, "");
     return phoneNumber?.length === 10 || "Phone number must be 10 digits";
   };
 
   const onSubmit = (data) => {
-    console.log(data);
     setData(data);
     dispatch(openDetailsPopup(data));
     dispatch(closeContactPopup());
@@ -177,14 +171,8 @@ const ContactPopup = () => {
             </p>
           </div>
 
-          {/* <input
-            className="px-4 py-2 my-4 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
-            type="submit"
-          /> */}
-
           <input className="submitbutton " type="submit" />
         </form>
-        <DevTool control={control} />
       </div>
     </Modal>
   );

@@ -10,8 +10,8 @@ mongoose
       useUnifiedTopology: true,
     }
   )
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.log("MongoDB connection error:", err));
+  .then(() => console.warn("MongoDB connected"))
+  .catch((err) => console.warn("MongoDB connection error:", err));
 
 // Named export function to resolve ESLint warning
 export default async function addClientDetailsHandler(req, res) {

@@ -1,7 +1,16 @@
 import Fade from "@/src/components/Fade";
-import FullDetails from "@/src/components/FullDeatils";
-import MyDetails from "@/src/components/MyDetails";
+import dynamic from "next/dynamic";
 import React from "react";
+
+const FullDetails = dynamic(() => import("@/src/components/FullDeatils"), {
+  ssr: false,
+  loading: () => <p>Loading...</p>,
+});
+
+const MyDetails = dynamic(() => import("@/src/components/MyDetails"), {
+  ssr: false,
+  loading: () => <p>Loading...</p>,
+});
 
 const AboutPage = () => {
   return (

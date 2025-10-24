@@ -30,7 +30,7 @@ export const projectsData = [
   },
   {
     id: 2,
-    imgUrl: "/portfolio.png",
+    imgUrl: "/portfolio.webp",
     title: "Personal Portfolio",
     category: "react",
     description: `Developed In this project, which uses HTML,Tailwind CSS, and React,Next.js. I have contributed
@@ -50,7 +50,7 @@ export const projectsData = [
   },
   {
     id: 4,
-    imgUrl: "/moviesapp.png",
+    imgUrl: "/moviesapp.webp",
     title: "Movies App",
     description: `Implemented responsive OTT platform app like Netflix/Amazon Clone where users can see movies ,
     `,
@@ -61,7 +61,7 @@ export const projectsData = [
 
   {
     id: 5,
-    imgUrl: "/foodmuch.png",
+    imgUrl: "/foodmuch.webp",
     title: "Food Munch",
     description: `Developed a responsive website for a Food Store where users can see a list of food items, detailed information`,
     category: "",
@@ -91,7 +91,7 @@ export const projectsData = [
   },
   {
     id: 8,
-    imgUrl: "/reacttodolist.png",
+    imgUrl: "/reacttodolist.webp",
     title: "React Todo App",
     description: `A comprehensive todo management tool designed to enhance productivity .
     `,
@@ -114,7 +114,7 @@ export const contactDetails = [
 ];
 
 const portfolio = {
-  imgUrl: "/portfolio.png",
+  imgUrl: "/portfolio.webp",
   title: "Personal Portfolio",
   technologies: [
     { icon: <AiFillHtml5 /> },
@@ -167,7 +167,7 @@ const todolist = {
 };
 
 const moviesApp = {
-  imgUrl: "/moviesapp.png",
+  imgUrl: "/moviesapp.webp",
   title: "Movies App",
   technologies: [
     { icon: <AiFillHtml5 /> },
@@ -246,7 +246,7 @@ const RestaurantWebsite = {
 };
 
 const FoodMunch = {
-  imgUrl: "/foodmuch.png",
+  imgUrl: "/foodmuch.webp",
   title: "Food Munch",
   technologies: [
     { icon: <AiFillHtml5 /> },
@@ -382,6 +382,7 @@ export const skillsData = [
   "Next Js",
   "SASS/SCSS",
   "Material UI",
+  "Shadcn"
 ];
 
 export const educationDetails = [

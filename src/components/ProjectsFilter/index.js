@@ -1,16 +1,19 @@
-import React, { memo, useState } from "react";
 import ProjectCard from "../ProjectCard";
 import { tabs, projectsData } from "@/src/Data";
 import { motion } from "framer-motion";
+import { memo, useMemo, useState } from "react";
 
 const ProjectsFilter = () => {
   const [tabsId, setTabsId] = useState("");
 
-  const filterData = !tabsId
-    ? projectsData
-    : projectsData.filter((item) => item.category === tabsId);
+  const filterData = useMemo(
+    () =>
+      !tabsId
+        ? projectsData
+        : projectsData.filter((item) => item.category === tabsId),
+    [tabsId]
+  );
 
- 
   const Tab = ({ val, isActive, onClick }) => (
     <button
       onClick={onClick}

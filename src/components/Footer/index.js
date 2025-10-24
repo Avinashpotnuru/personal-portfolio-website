@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 import { navLinks, socialLinks } from "@/src/Data";
+import { memo } from "react";
 
 const iconVariants = {
   hover: {
@@ -20,36 +21,36 @@ const iconVariants = {
   },
 };
 
-
-
-
 const Footer = () => {
+  const navLinksMapped = navLinks?.map((link) => (
+    <Link key={link.href} href={link.href}>
+      <h1 className="hover:text-[#4e4ee1] hover:font-roboto-slab">
+        {link.label}
+      </h1>
+    </Link>
+  ));
+
+  const socialLinksMapped = socialLinks?.map((link) => (
+    <motion.a
+      key={link.href}
+      variants={iconVariants}
+      whileHover="hover"
+      href={link.href}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {link.icon}
+    </motion.a>
+  ));
+
   return (
-    <div className="bg-[#061820] w-full text-white py-5 ">
+    <div className="bg-[#061820] w-full text-white py-5">
       <div className="sm:w-[80%] md:w-[70%] lg:w-[30%] sm:mx-auto">
         <div className="flex items-center justify-around py-5">
-          {navLinks?.map((link) => (
-            <h1
-              key={link.href}
-              className="hover:text-[#4e4ee1] hover:font-roboto-slab"
-            >
-              <Link href={link.href}>{link.label}</Link>
-            </h1>
-          ))}
+          {navLinksMapped}
         </div>
         <div className="flex items-center justify-around py-5">
-          {socialLinks?.map((link) => (
-            <motion.a
-              key={link.href}
-              variants={iconVariants}
-              whileHover="hover"
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {link.icon}
-            </motion.a>
-          ))}
+          {socialLinksMapped}
         </div>
         <h1 className="px-5 py-4 text-center">
           Copyright ©2023{" "}
@@ -63,4 +64,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default memo(Footer);

@@ -1,5 +1,3 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-
 import { Details } from "@/src/model/model";
 
 import mongoose from "mongoose";
@@ -12,11 +10,11 @@ mongoose
       useUnifiedTopology: true,
     }
   )
-  .then(() => console.log("connect"))
-  .catch((err) => console.log(err));
+  .then(() => console.warn("connect"))
+  .catch((err) => console.warn(err));
 
 export default function handler(req, res) {
   Details.find({})
     .then((result) => res.send(result))
-    .catch((err) => console.log(err));
+    .catch((err) => console.warn(err));
 }

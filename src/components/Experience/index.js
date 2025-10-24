@@ -19,7 +19,7 @@ const ExperienceComponent = () => {
       >
         Experience
       </motion.h1>
-      <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-2 lg:w-[80%]">
+      <motion.div className="grid grid-cols-1 lg:grid-cols-2 gap-5 md:gap-2 md:w-[90%] lg:w-[80%]">
         {experienceData.map((val, index) => (
           <ExperienceInfo key={index} val={val} index={index} />
         ))}

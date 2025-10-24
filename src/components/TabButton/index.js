@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useCallback } from "react";
 
 const TabButtonComponent = ({ label, index, activeTab, onClick }) => {
   const isActive = activeTab === index;
@@ -6,13 +6,22 @@ const TabButtonComponent = ({ label, index, activeTab, onClick }) => {
     isActive ? "border-[#0c7fb0] border-b-2 font-medium pb-3" : "text-black"
   }`;
 
+  const handleClick = useCallback(() => onClick(index), [onClick, index]);
+
   return (
-    <button className={buttonClasses} onClick={() => onClick(index)}>
+    <button
+      type="button"
+      className={buttonClasses}
+      role="tab"
+      aria-selected={isActive}
+      tabIndex={isActive ? 0 : -1}
+      onClick={handleClick}
+    >
       {label}
     </button>
   );
 };
 
-const TabButton = memo(TabButtonComponent);
 
-export default TabButton;
+
+export default memo(TabButtonComponent);
