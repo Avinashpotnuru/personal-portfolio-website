@@ -1,19 +1,12 @@
 import React, { memo } from "react";
-
-import ProjectCard from "../ProjectCard";
-
 import { projectsData } from "@/src/Data";
-
-// third party imports
-
 import { motion } from "framer-motion";
 import TextContainer from "../TextAnimationContainer";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import Link from "next/link";
+import ProjectCard from "../ProjectCard";
 
 const MyProjects = () => {
-
-
   return (
     <div className="mt-2 overflow-hidden md:my-10">
       <TextContainer
@@ -25,7 +18,7 @@ const MyProjects = () => {
         initial={{ opacity: 0, x: "-100vh" }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.8, duration: 1.2 }}
-        className="mb-5 grid grid-cols-1 gap-4  sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 mx-auto w-[90%]   "
+        className="grid grid-cols-1 gap-4 px-4 mx-auto sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 md:px-10 lg:px-20 lg:gap-10"
       >
         {projectsData?.map((item, idx) => (
           <ProjectCard data={item} key={idx} />

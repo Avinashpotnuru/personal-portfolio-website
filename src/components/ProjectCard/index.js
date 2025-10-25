@@ -1,58 +1,62 @@
-import Link from "next/link";
-import React from "react";
+
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 const ProjectCard = ({ data }) => {
-  // console.log(data);
   return (
     <motion.div
-      viewport={{ once: true, amount: 0.5 }}
-      whileHover={{ scale: 1.05 }}
       initial={{
         opacity: 0,
-        translateX: data.id % 2 === 1 ? "-100vh" : "130vh",
-        translateY: -50,
+        y: 100,
+        x: data.id % 2 === 1 ? -100 : 100,
       }}
-      animate={{ opacity: 1, translateX: 0, translateY: 0 }}
-      transition={{ delay: 1, duration: data.id * 0.3 }}
-      className="h-[480px] sm:h-[490px]  md:h-[450px] lg:h-[400px] group bg-[#0c7fb0]  mx-auto shadow-2xl rounded-xl overflow-hidden "
+      whileInView={{
+        opacity: 1,
+        y: 0,
+        x: 0,
+      }}
+      transition={{
+        duration: 0.8,
+        delay: data.id * 0.1,
+        ease: "easeOut",
+      }}
+      viewport={{ once: true, amount: 0.3 }}
+      whileHover={{ scale: 1.05 }}
+      className="relative flex flex-col my-6 transition-shadow duration-300 bg-[#0c7fb0] border rounded-lg shadow-sm cursor-pointer group border-slate-200 hover:shadow-lg"
     >
-      <div className="overflow-hidden h-1/2 ">
+      <div className="relative m-2.5 overflow-hidden text-white rounded-md">
         <Image
-          width={240}
-          height={140}
+          className="w-full transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] transform group-hover:scale-110"
           src={data.imgUrl}
           alt={data?.title}
-          className=" rounded-xl hover:scale-110 duration-500 transition-all   h-full w-full mx-auto border-t rounded-t-[12px] "
+          width={500}
+          height={500}
         />
       </div>
 
-      <div className="px-3 text-black h-1/2 group">
-        <h1 className="my-4 text-lg font-extrabold text-center group-hover:text-white font-Lexend ">
+      <div className="px-3 text-black transition-all duration-500 h-1/2 group-hover:text-white font-roboto-slab">
+        <h1 className="my-4 text-lg font-extrabold text-center group-hover:text-white">
           {data?.title}
         </h1>
-        <h1 className="text-center group-hover:text-white card__preview-text">
+        <p className="text-center group-hover:text-white card__preview-text">
           {data?.description}
-        </h1>
-        <div className="mt-5 sm:mt-4 md:flex md:justify-around md:items-center">
-          <div className="text-center ">
+        </p>
+
+        <div className="p-5 transition-all duration-500 md:flex md:justify-around md:items-center">
+          <div className="text-center">
             <Link href={data?.Link}>
-              <button className="text-white btn from-left font-roboto-slab">
-                Read more
-              </button>
+              <button className="text-white btn from-left">Read more</button>
             </Link>
           </div>
-          <div className="mt-2 text-center sm:mt-0 ">
-            <a
+          <div className="mt-2 text-center sm:mt-0">
+            <Link
               href={data?.deploylink}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <button className="text-white btn from-left font-roboto-slab">
-                view project
-              </button>
-            </a>
+              <button className="text-white btn from-left">View project</button>
+            </Link>
           </div>
         </div>
       </div>

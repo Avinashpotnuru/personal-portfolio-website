@@ -1,24 +1,25 @@
 import dynamic from "next/dynamic";
 import React, { useCallback, useState } from "react";
+import Loader from "../Loader";
 
 const Experience = dynamic(() => import("../Experience"), {
   ssr: false,
-  loading: () => <p>Loading...</p>,
+  loading: () => <Loader />,
 });
 
 const Skills = dynamic(() => import("../Skills"), {
   ssr: false,
-  loading: () => <p>Loading...</p>,
+  loading: () => <Loader />,
 });
 
 const Education = dynamic(() => import("../Education"), {
   ssr: false,
-  loading: () => <p>Loading...</p>,
+  loading: () => <Loader />,
 });
 
 const TabButton = dynamic(() => import("../TabButton"), {
   ssr: false,
-  loading: () => <p>Loading...</p>,
+  loading: () => <Loader />,
 });
 
 const tabs = [

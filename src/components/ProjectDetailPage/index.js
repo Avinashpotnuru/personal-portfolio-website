@@ -10,14 +10,14 @@ import Image from "next/image";
 
 const ProjectDetailPage = ({ data }) => {
   return (
-    <div className="px-5 my-5 sm:my-20 sm:w-[95%] lg:w-[90%] sm:mx-auto ">
+    <div className="px-5 my-5 lg:px-20 sm:my-20 sm:mx-auto ">
       <Link href={"/projects"}>
         <div className="p-3 cursor-pointer ">
           <IoIosArrowBack />
         </div>
       </Link>
-      <div className="flex flex-col my-4 sm:flex-row ">
-        <div className="my-auto sm:w-1/2 sm:flex sm:justify-center sm:items-center ">
+      <div className="flex flex-col gap-5 py-5 my-4 lg:flex-row ">
+        <div className="my-auto sm:flex sm:justify-center sm:items-center ">
           <Image
             height={500}
             width={500}
@@ -27,12 +27,12 @@ const ProjectDetailPage = ({ data }) => {
             priority
           />
         </div>
-        <div className="sm:w-1/2 sm:px-10 ">
-          <h1 className="my-2 text-3xl font-bold text-cyan-500 sm:my-4 ">
+        <div className="sm:px-10">
+          <h1 className="my-2 text-3xl font-bold text-center lg:text-left text-cyan-500 sm:my-4 ">
             {data?.title}
           </h1>
 
-          <h1 className="mb-6 text-xl font-bold text-center sm:text-2xl sm:text-left ">
+          <h1 className="mb-6 text-2xl font-bold text-center sm:text-xl lg:text-left ">
             Technologies
           </h1>
           <div className=" w-[90%] mx-auto overflow-x-auto overflow-desk  ">

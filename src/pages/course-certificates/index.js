@@ -1,10 +1,9 @@
+import Loader from "@/src/components/Loader";
 import dynamic from "next/dynamic";
-
-
 
 const CourseCertificate = dynamic(
   () => import("@/src/components/CourseCertificate"),
-  { ssr: false, loading: () => <p>Loading...</p> }
+  { ssr: false, loading: () => <Loader /> }
 );
 
 const CourseCertificates = () => {
