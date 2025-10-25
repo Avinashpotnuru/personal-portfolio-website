@@ -54,7 +54,7 @@ const ProjectsFilter = () => {
         </div>
       </div>
       {filterData.length ? (
-        <div className="mb-5 grid grid-cols-1 gap-4  sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 mx-auto w-[90%]  ">
+        <div className="grid grid-cols-1 gap-4 px-4 mx-auto sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 md:px-10 lg:px-20 lg:gap-10">
           {filterData.map((item, idx) => (
             <MemoizedProjectCard data={item} key={idx} />
           ))}
