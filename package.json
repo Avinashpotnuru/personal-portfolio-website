@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+     "analyze": "cross-env ANALYZE=true next build"
   },
   "dependencies": {
     "@emailjs/browser": "^4.3.3",
@@ -31,6 +32,8 @@
   },
   "devDependencies": {
     "@hookform/devtools": "^4.3.1",
+    "@next/bundle-analyzer": "^16.0.0",
+    "cross-env": "^10.1.0",
     "eslint-plugin-unused-imports": "^4.3.0"
   }
 }
