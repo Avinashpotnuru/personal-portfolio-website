@@ -3,9 +3,13 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 import React from "react";
 import { Provider } from "react-redux";
-import { ToastContainer } from "react-toastify";
+// import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loader from "../Loader";
+const DynamicToastContainer = dynamic(
+  () => import("react-toastify").then((mod) => mod.ToastContainer), // import only ToastContainer
+  { ssr: false } // disable SSR, because ToastContainer is client-only
+);
 
 const Header = dynamic(() => import("../Header"), {
   ssr: false,
@@ -56,7 +60,7 @@ const Layout = ({ children }) => {
       <Provider store={store}>
         <ContactPopup />
         <DetailsPopup />
-        <ToastContainer {...toastConfig} />
+        <DynamicToastContainer {...toastConfig} />
 
         <Header />
         <main>{children}</main>

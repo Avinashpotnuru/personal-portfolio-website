@@ -1,10 +1,9 @@
-import { useRouter } from "next/router";
 import React, { useEffect, useMemo } from "react";
-
+import dynamic from "next/dynamic";
+import { useRouter, useSearchParams } from "next/navigation";
 import { pages } from "@/src/Data";
 
-import Fade from "@/src/components/Fade";
-import dynamic from "next/dynamic";
+const Fade = dynamic(() => import("@/src/components/Fade"), { ssr: false });
 
 const ProjectDetailPage = dynamic(
   () => import("@/src/components/ProjectDetailPage"),
@@ -13,7 +12,8 @@ const ProjectDetailPage = dynamic(
 
 const ProjectInfoPages = () => {
   const router = useRouter();
-  const { id } = router.query;
+  const params = useSearchParams();
+  const id = params.get("id");
 
   const pageToRender = useMemo(
     () => ({
@@ -50,4 +50,5 @@ const ProjectInfoPages = () => {
     </Fade>
   );
 };
+
 export default ProjectInfoPages;
