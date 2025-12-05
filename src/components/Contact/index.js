@@ -29,7 +29,7 @@ const Contact = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="px-3 md:w-[90%] md:mx-auto">
+    <div className="px-3 md:px-10 lg:px-16 md:mx-auto ">
       <motion.h1
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -39,7 +39,7 @@ const Contact = () => {
         Get in touch
       </motion.h1>
 
-      <div className="grid grid-cols-2 gap-4 mb-5 sm:grid-cols-2 lg:grid-cols-4 md:gap-y-10 lg:gap-y-14">
+      <div className="grid grid-cols-1 gap-4 mb-5 md:gap-8 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
         {contactInfo.map(({ icon: Icon, label }, i) => (
           <motion.div
             key={i}
@@ -55,7 +55,7 @@ const Contact = () => {
             >
               <Icon size={window.innerWidth < 640 ? 30 : 50} />
             </motion.div>
-            <h1 className="font-bold text-center sm:text-xl font-roboto">
+            <h1 className="px-5 font-bold text-center sm:text-xl font-roboto">
               {label}
             </h1>
           </motion.div>
@@ -87,7 +87,7 @@ const Contact = () => {
         </motion.div>
       </div>
 
-      <div className="flex justify-center my-3">
+      <div className="flex justify-center my-3 mb-5">
         <button
           onClick={() => dispatch(openContactPopup())}
           className="contact"

@@ -3,29 +3,22 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 import React from "react";
 import { Provider } from "react-redux";
-// import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loader from "../Loader";
+import Header from "../Header";
+import Footer from "../Footer";
 const DynamicToastContainer = dynamic(
-  () => import("react-toastify").then((mod) => mod.ToastContainer), // import only ToastContainer
-  { ssr: false } // disable SSR, because ToastContainer is client-only
+  () => import("react-toastify").then((mod) => mod.ToastContainer),
+  { ssr: false }
 );
 
-const Header = dynamic(() => import("../Header"), {
+const ContactPopup = dynamic(() => import("../ContactPopup"), {
   ssr: false,
   loading: () => <Loader />,
 });
-const Footer = dynamic(() => import("../Footer"), {
-  ssr: false,
-  loading: () => <div>Loading...</div>,
-});
-const ContactPopup = dynamic(() => import("../ContactPopup"), {
-  ssr: false,
-  loading: () => <div>Loading...</div>,
-});
 const DetailsPopup = dynamic(() => import("../DetailsPopup"), {
   ssr: false,
-  loading: () => <div>Loading...</div>,
+  loading: () => <Loader />,
 });
 
 const toastConfig = {
