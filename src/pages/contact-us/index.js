@@ -10,7 +10,7 @@ const Contact = dynamic(() => import("@/src/components/Contact"), {
 const ContactUsPage = () => {
   return (
     <Fade>
-      <div className="mt-24 ">
+      <div className="min-h-[65vh] md:flex md:items-center md:justify-center w-full">
         <Contact />
       </div>
     </Fade>

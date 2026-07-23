@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo } from "react";
 import dynamic from "next/dynamic";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/router";
 import { pages } from "@/src/Data";
 
 const Fade = dynamic(() => import("@/src/components/Fade"), { ssr: false });
@@ -12,9 +12,8 @@ const ProjectDetailPage = dynamic(
 
 const ProjectInfoPages = () => {
   const router = useRouter();
-  const params = useSearchParams();
-  const id = params.get("id");
 
+  const { id } = router.query;
   const pageToRender = useMemo(
     () => ({
       "todo-list": pages?.todolist,
