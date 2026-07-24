@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import TextContainer from "../TextAnimationContainer";
+import myProfile from "../../../public/my-profile.webp";
 
 const About = () => {
   return (
@@ -58,21 +59,16 @@ const About = () => {
         transition={{ delay: 0.4, duration: 0.5 }}
         className="flex items-center justify-center order-1 sm:w-1/2 sm:order-2"
       >
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 1, staggerChildren: 0.08 }}
-          className=" md:rounded-[50%] md:h-[400px] md:w-[400px] lg:h-[440px] lg:w-[440px] flex justify-center items-center"
-        >
+       
           <Image
-            src="/certificates/profile-pic1.png"
+            src={myProfile}
             alt="Profile picture"
             width={400}
             height={400}
             priority
             decoding="async"
           />
-        </motion.div>
+        
       </motion.div>
     </div>
   );

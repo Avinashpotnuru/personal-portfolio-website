@@ -22,13 +22,12 @@ const DetailsPopup = () => {
     (state) => state.popSlice.detailsPopup.helperData
   );
 
-  // const stringfyDetails = JSON.stringify(details);
-
-  const postToBackend = () => {
+ 
+const postToBackend = () => {
     setLoading(true);
     emailjs
-      .send("service_alz1vm5", "template_o9npyoh", details, {
-        publicKey: "QfEGbzlQ-M-R-nrmU",
+      .send("service_hc0ggwy", "template_oz2wgll", details, {
+        publicKey: "et9hy-UW09sGANjfT",
       })
       .then(
         (result) => {
@@ -44,7 +43,7 @@ const DetailsPopup = () => {
           setLoading(false);
           console.warn(error);
           toast.error("Failed to send details");
-        }
+        },
       );
   };
   const detailList = [
@@ -83,13 +82,14 @@ const DetailsPopup = () => {
                 ))}
                 <div className="flex items-center justify-center">
                   <button onClick={postToBackend} className="submitbutton">
-                    {loading ? "Sending..." : "Conform"}
+                    {loading ? "Sending..." : "Confirm Details"}
                   </button>
                 </div>
               </dl>
             </>
           ) : (
             <Image
+            className="mx-auto"
               width={200}
               height={200}
               priority
