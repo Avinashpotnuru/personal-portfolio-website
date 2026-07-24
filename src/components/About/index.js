@@ -1,3 +1,4 @@
+import { memo } from "react";
 import Image from "next/image";
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
@@ -74,4 +75,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default memo(About);

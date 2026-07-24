@@ -1,24 +1,20 @@
 import dynamic from "next/dynamic";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState,useMemo } from "react";
 import Loader from "../Loader";
 
 const Experience = dynamic(() => import("../Experience"), {
-  ssr: false,
   loading: () => <Loader />,
 });
 
 const Skills = dynamic(() => import("../Skills"), {
-  ssr: false,
   loading: () => <Loader />,
 });
 
 const Education = dynamic(() => import("../Education"), {
-  ssr: false,
   loading: () => <Loader />,
 });
 
 const TabButton = dynamic(() => import("../TabButton"), {
-  ssr: false,
   loading: () => <Loader />,
 });
 
@@ -31,10 +27,12 @@ const tabs = [
 const FullDetails = () => {
   const [selectedTabIndex, setSelectedTabIndex] = useState(1);
 
-  const tabComponents = tabs.reduce((tabComponents, tab) => {
-    tabComponents[tab.id] = tab.component;
-    return tabComponents;
-  }, {});
+   const tabComponents = useMemo(() => {
+    return tabs.reduce((acc, tab) => {
+      acc[tab.id] = tab.component;
+      return acc;
+    }, {});
+  }, []);
 
   const handleTabClick = useCallback((index) => {
     setSelectedTabIndex(index);
