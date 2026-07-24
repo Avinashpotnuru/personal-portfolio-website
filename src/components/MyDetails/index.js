@@ -2,6 +2,8 @@ import Image from "next/image";
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import React, { memo } from "react";
+import myProfile from "../../../public/my-profile.webp";
+
 
 // third party imports
 
@@ -27,7 +29,7 @@ const MyDetails = () => {
         className="sm:w-1/2 "
       >
         <Image
-          src="/certificates/profile-pic.png"
+          src={myProfile}
           alt="Profile picture of Avinash Potnuru"
           width={400}
           height={400}

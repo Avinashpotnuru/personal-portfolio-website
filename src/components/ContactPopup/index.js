@@ -110,6 +110,10 @@ const ContactPopup = () => {
               animate="visible"
               className="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
               {...register("email", {
+                required: {
+                  value: true,
+                  message: "Email is required",
+                },
                 pattern: {
                   value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
                   message: "Invalid email formate",
