@@ -7,13 +7,13 @@ const Fade = dynamic(() => import("@/src/components/Fade"), { ssr: false });
 
 const ProjectDetailPage = dynamic(
   () => import("@/src/components/ProjectDetailPage"),
-  { ssr: false, loading: () => <p>Loading...</p> }
 );
 
 const ProjectInfoPages = () => {
   const router = useRouter();
 
   const { id } = router.query;
+
   const pageToRender = useMemo(
     () => ({
       "todo-list": pages?.todolist,
@@ -25,7 +25,7 @@ const ProjectInfoPages = () => {
       portfolio: pages?.portfolio,
       "react-todolist": pages?.reacttodolist,
     }),
-    []
+    [],
   );
 
   useEffect(() => {

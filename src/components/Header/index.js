@@ -1,7 +1,5 @@
-
-
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { RiInformationLine, RiContactsBookLine } from "react-icons/ri";
 import { FaRegUser } from "react-icons/fa";
@@ -9,6 +7,12 @@ import { CiMedal } from "react-icons/ci";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import TextContainer from "../TextAnimationContainer";
+const Links = [
+  { name: "HOME", link: "/", icon: <FaRegUser /> },
+  { name: "ABOUT", link: "/about", icon: <RiInformationLine /> },
+  { name: "CERTIFICATES", link: "/course-certificates", icon: <CiMedal /> },
+  { name: "CONTACT", link: "/contact-us", icon: <RiContactsBookLine /> },
+];
 
 const Header = () => {
   const path = usePathname();
@@ -25,13 +29,6 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const Links = [
-    { name: "HOME", link: "/", icon: <FaRegUser /> },
-    { name: "ABOUT", link: "/about", icon: <RiInformationLine /> },
-    { name: "CERTIFICATES", link: "/course-certificates", icon: <CiMedal /> },
-    { name: "CONTACT", link: "/contact-us", icon: <RiContactsBookLine /> },
-  ];
 
   return (
     <header
@@ -108,4 +105,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default memo(Header);

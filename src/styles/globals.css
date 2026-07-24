@@ -52,7 +52,6 @@ body {
 .contact {
   border: none;
   padding: 10px;
-
   position: relative;
   background: transparent;
   color: black;
@@ -157,7 +156,7 @@ span {
 .btn:hover {
   color: var(--def);
   transition-delay: 0.5s;
-  
+
 }
 
 .btn:hover:before {
@@ -352,5 +351,5 @@ span {
   -webkit-box-orient: vertical;
   overflow: hidden;
   line-clamp: 2;
- 
+
 }

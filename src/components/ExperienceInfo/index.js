@@ -1,4 +1,4 @@
-
+import { memo } from "react";
 import { motion } from "framer-motion";
 const ExperienceInfo = ({ val, index }) => (
   <motion.div
@@ -25,4 +25,4 @@ const ExperienceInfo = ({ val, index }) => (
   </motion.div>
 );
 
-export default ExperienceInfo;
+export default memo(ExperienceInfo);

@@ -26,7 +26,7 @@ const MyProjects = () => {
       </motion.div>
       <div className="flex items-center justify-center my-4 group ">
         <Link href={"/projects"} aria-label="View more projects">
-          <div className="bg-[#0c7fb0] font-roboto-slab   hover:bg-[#40bcf1] flex justify-center items-center space-x-2 text-white  py-2 px-4 rounded transition duration-700 ease-in-out ">
+          <div className="bg-[#0c7fb0] font-roboto-slab   hover:bg-[#0369a1] flex justify-center items-center space-x-2 text-white  py-2 px-4 rounded transition duration-700 ease-in-out ">
             <h1 className="">More Projects</h1>
             <div className="hidden group-hover:block ">
               <AiOutlineArrowRight className="" />
