@@ -26,6 +26,9 @@
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^16.0.0",
-    "eslint-plugin-unused-imports": "^4.3.0"
+    "autoprefixer": "^10.5.4",
+    "eslint-plugin-unused-imports": "^4.3.0",
+    "postcss": "^8.5.22",
+    "tailwindcss": "^4.3.3"
   }
 }
