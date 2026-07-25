@@ -3,7 +3,7 @@ import Loader from "@/src/components/Loader";
 import dynamic from "next/dynamic";
 
 const Contact = dynamic(() => import("@/src/components/Contact"), {
-  ssr: false,
+ 
   loading: () => <Loader />,
 });
 

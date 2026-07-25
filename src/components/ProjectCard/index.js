@@ -54,11 +54,11 @@ const ProjectCard = React.memo(({ data }) => {
         />
       </div>
 
-      <div className="px-3 text-black transition-all duration-500 h-1/2 group-hover:text-white font-roboto-slab">
-        <h2 className="my-4 text-lg font-extrabold text-center group-hover:text-white">
+      <div className="px-3 text-black transition-all duration-500 h-1/2 group-hover:text-white  font-roboto-slab">
+        <h2 className="my-2 text-lg font-extrabold text-center group-hover:text-white transition-all duration-500">
           {title}
         </h2>
-        <p className="text-center group-hover:text-white card__preview-text">
+        <p className="text-center text-md group-hover:text-white card__preview-text transition-all duration-500">
           {description}
         </p>
 

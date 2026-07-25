@@ -34,6 +34,7 @@ const MyDetails = () => {
           width={400}
           height={400}
           priority
+          className="w-[95%] h-full sm:h-auto sm:my-auto mx-auto object-fill"
         />
       </motion.div>
       <motion.div

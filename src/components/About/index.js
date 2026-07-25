@@ -58,7 +58,7 @@ const About = () => {
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.4, duration: 0.5 }}
-        className="flex items-center justify-center order-1 sm:w-1/2 sm:order-2"
+        className="flex items-center justify-center order-1 sm:w-1/2 sm:order-2 px-5"
       >
        
           <Image

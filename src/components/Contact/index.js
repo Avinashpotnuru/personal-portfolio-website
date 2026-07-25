@@ -29,7 +29,7 @@ const Contact = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="px-3 md:px-10 lg:px-16 md:mx-auto ">
+    <div className="px-3 md:px-10 xl:px-20 md:mx-auto ">
       <motion.h1
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -87,7 +87,7 @@ const Contact = () => {
         </motion.div>
       </div>
 
-      <div className="flex justify-center my-3 mb-5">
+      <div className="flex justify-center my-3 md:mt-10  lg:my-10 lg:mt-10 mb-5">
         <button
           onClick={() => dispatch(openContactPopup())}
           className="contact"

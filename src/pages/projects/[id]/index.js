@@ -7,6 +7,7 @@ const Fade = dynamic(() => import("@/src/components/Fade"), { ssr: false });
 
 const ProjectDetailPage = dynamic(
   () => import("@/src/components/ProjectDetailPage"),
+  {  loading: () => <p>Loading...</p> }
 );
 
 const ProjectInfoPages = () => {

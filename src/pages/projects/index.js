@@ -2,7 +2,7 @@ import React from "react";
 
 const ProjectsFilter = dynamic(
   () => import("@/src/components/ProjectsFilter"),
-  { ssr: false },
+ 
   { loading: () => <p>Loading...</p> }
 );
 

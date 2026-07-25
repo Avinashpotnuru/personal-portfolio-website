@@ -19,7 +19,7 @@ const CertificateCard = ({ data, id }) => {
         delay: getAnimationDelay(id),
         duration: ANIMATION_DURATION,
       }}
-      className="card h-[330px] sm:h-auto lg:h-[320px]"
+      className="card h-[260px] sm:h-auto md:h-[250px] lg:h-[320px] xl:h-[250px] px-5"
     >
       <Image
         width={IMAGE_DIMENSIONS}

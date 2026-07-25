@@ -45,7 +45,7 @@ const Footer = () => {
 
   return (
     <div className="bg-[#061820] w-full text-white py-5">
-      <div className="sm:w-[80%] md:w-[70%] lg:w-[30%] sm:mx-auto">
+      <div className="sm:w-[80%] md:w-[70%] lg:w-[50%] sm:mx-auto">
         <div className="flex items-center justify-around py-5">
           {navLinksMapped}
         </div>
@@ -53,7 +53,7 @@ const Footer = () => {
           {socialLinksMapped}
         </div>
         <h1 className="px-5 py-4 text-center">
-          Copyright ©2023{" "}
+          Copyright ©2026{" "}
           <span className="font-roboto-slab text-base hover:text-[#4e4ee1]">
             Avinash Potnuru
           </span>

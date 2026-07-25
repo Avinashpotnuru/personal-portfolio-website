@@ -18,7 +18,7 @@ const MyProjects = () => {
         initial={{ opacity: 0, x: "-100vh" }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.8, duration: 1.2 }}
-        className="grid grid-cols-1 gap-4 px-4 mx-auto sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 md:px-10 lg:px-20 lg:gap-10"
+        className="grid grid-cols-1 gap-4 px-4 mx-auto sm:grid-cols-2 sm:gap-5 lg:grid-cols-3  md:px-10 lg:px-[120px] 2xl:grid-cols-4 lg:gap-10"
       >
         {projectsData?.map((item, idx) => (
           <ProjectCard data={item} key={idx} />
@@ -28,12 +28,13 @@ const MyProjects = () => {
         <Link href={"/projects"} aria-label="View more projects">
           <div className="bg-[#0c7fb0] font-roboto-slab   hover:bg-[#0369a1] flex justify-center items-center space-x-2 text-white  py-2 px-4 rounded transition duration-700 ease-in-out ">
             <h1 className="">More Projects</h1>
-            <div className="hidden group-hover:block ">
+            <div className="hidden group-hover:block transition duration-700 ease-in-out  ">
               <AiOutlineArrowRight className="" />
             </div>
           </div>
         </Link>
       </div>
+      
     </div>
   );
 };

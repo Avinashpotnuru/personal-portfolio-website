@@ -3,12 +3,12 @@ import dynamic from "next/dynamic";
 
 const CourseCertificate = dynamic(
   () => import("@/src/components/CourseCertificate"),
-  { ssr: false, loading: () => <Loader /> }
+  {  loading: () => <Loader /> }
 );
 
 const CourseCertificates = () => {
   return (
-    <div className="mt-24 overflow-hidden">
+    <div className=" overflow-hidden">
       <CourseCertificate />
     </div>
   );
