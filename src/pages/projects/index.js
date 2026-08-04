@@ -12,7 +12,7 @@ import dynamic from "next/dynamic";
 const ProjectsPage = () => {
   return (
     <Fade>
-      <div className="mt-20">
+      <div className="mt-20 overflow-hidden">
         <ProjectsFilter />
       </div>
     </Fade>

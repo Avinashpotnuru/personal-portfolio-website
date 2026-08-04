@@ -7,13 +7,13 @@ const Fade = dynamic(() => import("@/src/components/Fade"), { ssr: false });
 
 const ProjectDetailPage = dynamic(
   () => import("@/src/components/ProjectDetailPage"),
-  {  loading: () => <p>Loading...</p> }
+  { loading: () => <p>Loading...</p> },
 );
 
-const ProjectInfoPages = () => {
-  const router = useRouter();
+const ProjectInfoPages =  () => {
+  const router =  useRouter();
 
-  const { id } = router.query;
+  const { id } =  router.query;
 
   const pageToRender = useMemo(
     () => ({
@@ -25,12 +25,15 @@ const ProjectInfoPages = () => {
       "type-master": pages?.typeMaster,
       portfolio: pages?.portfolio,
       "react-todolist": pages?.reacttodolist,
+      "cine-wave": pages?.cineWave,
+      "rc-parish": pages?.rcParish,
     }),
     [],
   );
 
   useEffect(() => {
     if (!id) return;
+
     if (!pageToRender[id]) {
       router.push("/");
     }
@@ -40,7 +43,7 @@ const ProjectInfoPages = () => {
 
   return (
     <Fade>
-      <div className="mt-24 min-h-[60vh]">
+      <div>
         {pageToRender[id] ? (
           <ProjectDetailPage data={pageToRender[id]} pageName={id} />
         ) : (

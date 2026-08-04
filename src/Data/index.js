@@ -1,7 +1,15 @@
 import { AiFillHtml5 } from "react-icons/ai";
 import { DiCss3, DiReact } from "react-icons/di";
 import { FaFigma, FaBootstrap } from "react-icons/fa";
-import { SiMongodb } from "react-icons/si";
+import {
+  SiMongodb,
+  SiTypescript,
+  SiExpo,
+  SiFirebase,
+  SiAxios,
+  SiReactquery,
+} from "react-icons/si";
+
 
 import {
   TbBrandTailwind,
@@ -14,8 +22,9 @@ import { BsFacebook, BsGithub, BsLinkedin, BsInstagram } from "react-icons/bs";
 export const tabs = [
   { id: 1, tab: "All", category: "" },
   { id: 2, tab: "JavaScript", category: "javascript" },
-  { id: 3, tab: "React", category: "react" },
+  { id: 3, tab: "React/Next.js", category: "react" },
   { id: 4, tab: "Full Stack", category: "fullstack" },
+  { id: 5, tab: "Android/IOS", category: "android" },
 ];
 
 export const projectsData = [
@@ -100,6 +109,26 @@ export const projectsData = [
     Link: "/projects/react-todolist",
     deploylink: "https://avinashtodolist.netlify.app/",
   },
+  {
+    id: 9,
+    imgUrl: "/cinewave.jpg",
+    title: "CineWave Movies Explorer App",
+    description: `A cross-platform React Native movie explorer application built with Expo. Features Firebase Authentication, TMDB API integration, real-time movie and TV show search, advanced filtering and sorting, and optimized server-state management using TanStack React Query for a fast and seamless user experience.`,
+    link: "",
+    category: "android",
+    Link: "/projects/cine-wave",
+    deploylink: "",
+  },
+  {
+    id: 10,
+    imgUrl: "/rc-parish.png",
+    title: "RC Parish Website & Dashboard",
+    description: `A modern React.js and TypeScript-based parish management website and dashboard featuring responsive UI, dynamic parish modules, React Hook Form with Zod validation, Zustand state management, and optimized performance through code splitting and lazy loading.`,
+    link: "",
+    category: "react",
+    Link: "/projects/rc-parish",
+    deploylink: "",
+  },
 ];
 
 export const contactDetails = [
@@ -112,6 +141,69 @@ export const contactDetails = [
     title: "phone number",
   },
 ];
+
+const rcParish = {
+  imgUrl: "/rc-parish.png",
+  title: "RC Parish Website & Dashboard",
+  technologies: [
+    { icon: <DiReact /> },
+    { icon: <SiTypescript /> },
+    { icon: <TbBrandTailwind /> },
+    { icon: <AiFillHtml5 /> },
+    { icon: <DiCss3 /> },
+  ],
+
+  description: `Developed a modern RC Parish Website and Dashboard using React.js and TypeScript, migrating from a legacy application to improve performance, scalability, and maintainability. Built responsive, reusable UI components with Tailwind CSS and Shadcn UI, implemented type-safe forms using React Hook Form and Zod, and optimized routing, code splitting, and lazy loading to deliver a fast and user-friendly experience.`,
+
+  projectLink: "",
+
+  keypoints: [
+    "Migrated the parish website from a legacy technology stack to React.js and TypeScript.",
+    "Developed a responsive and accessible user interface using Tailwind CSS and Shadcn UI.",
+    "Built reusable components for Mass schedules, sacraments, events, announcements, and community updates.",
+    "Implemented client-side routing using React Router with a type-safe routing structure.",
+    "Developed robust forms using React Hook Form and Zod for validation and improved developer experience.",
+    "Managed application state efficiently using Zustand.",
+    "Optimized application performance with code splitting, lazy loading, and minimized unnecessary re-renders.",
+    "Ensured responsive layouts and consistent user experience across desktop, tablet, and mobile devices.",
+    "Followed modern React development practices with reusable components and scalable project architecture.",
+  ],
+
+  githubLink: "",
+  category: "react",
+};
+
+const cineWave = {
+  imgUrl: "/cinewave.jpg",
+  title: "CineWave Movies Explorer App",
+  technologies: [
+    { icon: <DiReact /> },
+    { icon: <SiTypescript /> },
+    { icon: <SiExpo /> },
+    { icon: <SiFirebase /> },
+    { icon: <SiAxios /> },
+    { icon: <SiReactquery /> },
+  ],
+
+  description: `Developed a cross-platform Movies & TV Shows Explorer application using React Native, Expo, and TypeScript. Integrated the TMDB API to display trending, popular, upcoming movies and TV shows with real-time search functionality. Implemented Firebase Authentication for secure user login and TanStack React Query for efficient server-state management, API caching, and background synchronization, delivering a fast and responsive mobile experience.`,
+
+  projectLink: "",
+
+  keypoints: [
+    "Developed a cross-platform mobile application using React Native, Expo, and TypeScript.",
+    "Integrated TMDB API to display trending, popular, top-rated, upcoming movies and TV shows.",
+    "Implemented real-time movie and TV show search with dynamic API data fetching.",
+    "Added advanced filtering and sorting based on popularity, rating, release date, revenue, title, original title, vote count, and language.",
+    "Implemented Firebase Authentication for secure user login and registration.",
+    "Used TanStack React Query for API caching, background data synchronization, pagination, and improved application performance.",
+    "Built reusable components using React Hooks and Expo Router for scalable navigation.",
+    "Integrated Axios for API communication and centralized request handling.",
+    "Designed a responsive and intuitive mobile UI optimized for both Android and iOS devices.",
+  ],
+
+  githubLink: "",
+  category: "react-native",
+};
 
 const portfolio = {
   imgUrl: "/portfolio.webp",
@@ -319,6 +411,8 @@ export const pages = {
   typeMaster: typeMaster,
   portfolio: portfolio,
   reacttodolist: reacttodolist,
+  cineWave: cineWave,
+  rcParish: rcParish,
 };
 
 export const experienceData = [
@@ -382,7 +476,7 @@ export const skillsData = [
   "Next Js",
   "SASS/SCSS",
   "Material UI",
-  "Shadcn"
+  "Shadcn",
 ];
 
 export const educationDetails = [

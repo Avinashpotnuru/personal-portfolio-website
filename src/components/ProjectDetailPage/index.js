@@ -16,7 +16,7 @@ const ProjectDetailPage = React.memo(({ data }) => {
   } = data;
 
   return (
-    <div className="px-5 my-5 lg:px-20 sm:my-20 sm:mx-auto">
+    <div className="px-5 my-5 lg:px-20 sm:mx-auto">
       <Link href="/projects" className="inline-block">
         <div className="p-3 transition-colors rounded-lg cursor-pointer hover:bg-gray-100">
           <IoIosArrowBack />
@@ -70,14 +70,16 @@ const ProjectDetailPage = React.memo(({ data }) => {
           )}
 
           <br />
-          <a
-            className="inline-block text-blue-500 transition-colors hover:text-blue-700"
-            href={projectLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Project Link
-          </a>
+          {projectLink && (
+            <a
+              className="inline-block text-blue-500 transition-colors hover:text-blue-700"
+              href={projectLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Project Link
+            </a>
+          )}
 
           <hr className="my-4 border-t-2 border-gray-300" />
 
