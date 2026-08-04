@@ -11,20 +11,15 @@ const ProjectsFilter = () => {
       !tabsId
         ? projectsData
         : projectsData.filter((item) => item.category === tabsId),
-    [tabsId]
+    [tabsId],
   );
 
   const Tab = ({ val, isActive, onClick }) => (
     <button
       onClick={onClick}
-      className={` text-black  py-2 px-4 rounded font-Lexend
-
-      ${
-        isActive
-          ? "border-[#0c7fb0] border-b-2  pb-2 font-extrabold"
-          : "font-medium"
-      }
-      `}
+      className={`flex-shrink-0 whitespace-nowrap text-black py-2 px-4 rounded font-Lexend ${
+        isActive ? "border-[#0c7fb0] border-b-2 font-extrabold" : "font-medium"
+      }`}
     >
       {val.tab}
     </button>
@@ -42,15 +37,19 @@ const ProjectsFilter = () => {
           My Projects
         </motion.h1>
 
-        <div className="flex justify-center md:space-x-10 space-y-2 items-center my-9 md:w-[79%]  mx-auto  ">
-          {tabs.map((val, idx) => (
-            <Tab
-              key={idx}
-              val={val}
-              isActive={tabsId === val.category}
-              onClick={() => setTabsId(val?.category)}
-            />
-          ))}
+      
+        <div className="w-full overflow-x-auto hide-scrollbar">
+          <div className="flex gap-4 px-4 py-2 min-w-max">
+            {tabs.map((val, idx) => (
+              <div key={idx} className="flex-shrink-0">
+                <Tab
+                  val={val}
+                  isActive={tabsId === val.category}
+                  onClick={() => setTabsId(val.category)}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       {filterData.length ? (

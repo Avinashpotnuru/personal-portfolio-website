@@ -12,7 +12,7 @@ const ProjectCard = React.memo(({ data }) => {
     title = "Untitled Project",
     description = "No description available.",
     Link: readMoreLink,
-    deploylink: deployLink = "#",
+    deploylink,
   } = data;
 
   const animationVariants = {
@@ -54,11 +54,11 @@ const ProjectCard = React.memo(({ data }) => {
         />
       </div>
 
-      <div className="px-3 text-black transition-all duration-500 h-1/2 group-hover:text-white  font-roboto-slab">
-        <h2 className="my-2 text-lg font-extrabold text-center group-hover:text-white transition-all duration-500">
+      <div className="px-3 text-black transition-all duration-500 h-1/2 group-hover:text-white font-roboto-slab">
+        <h2 className="my-2 text-lg font-extrabold text-center transition-all duration-500 group-hover:text-white">
           {title}
         </h2>
-        <p className="text-center text-md group-hover:text-white card__preview-text transition-all duration-500">
+        <p className="text-center transition-all duration-500 text-md group-hover:text-white card__preview-text">
           {description}
         </p>
 
@@ -73,16 +73,20 @@ const ProjectCard = React.memo(({ data }) => {
               </button>
             </Link>
           </div>
-          <div className="mt-2 text-center sm:mt-0">
-            <Link
-              href={deployLink}
-              aria-label={`View project ${title} deployment`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <button className="text-white btn from-left">View project</button>
-            </Link>
-          </div>
+          {deploylink && (
+            <div className="mt-2 text-center sm:mt-0">
+              <Link
+                href={deploylink}
+                aria-label={`View project ${title} deployment`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button className="text-white btn from-left">
+                  View project
+                </button>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </motion.div>
