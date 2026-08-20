@@ -1,4 +1,6 @@
-import { memo } from "react";
+"use client";
+
+import { memo, useEffect, useState } from "react";
 import { FaUserAlt } from "react-icons/fa";
 import { MdCall } from "react-icons/md";
 import { HiOutlineMail } from "react-icons/hi";
@@ -27,6 +29,16 @@ const socialLinks = [
 
 const Contact = () => {
   const dispatch = useDispatch();
+  const [iconSize, setIconSize] = useState(50);
+
+  useEffect(() => {
+    const updateIconSize = () =>
+      setIconSize(window.innerWidth < 640 ? 30 : 50);
+
+    updateIconSize();
+    window.addEventListener("resize", updateIconSize);
+    return () => window.removeEventListener("resize", updateIconSize);
+  }, []);
 
   return (
     <div className="px-3 md:px-10 xl:px-20 md:mx-auto ">
@@ -53,7 +65,7 @@ const Contact = () => {
               whileHover="hover"
               className="my-5"
             >
-              <Icon size={window.innerWidth < 640 ? 30 : 50} />
+              <Icon size={iconSize} />
             </motion.div>
             <h1 className="px-5 font-bold text-center sm:text-xl font-roboto">
               {label}

@@ -1,38 +1,93 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Personal Portfolio
+
+A modern, responsive personal portfolio website for **Avinash Potnuru** (React.js / Frontend Developer). Built with **Next.js (App Router)**, **React**, **Tailwind CSS**, **Framer Motion**, and **Redux Toolkit**.
+
+## Features
+
+- **Home** – Hero section with text animations and quick links to projects, skills, and about.
+- **About** – Personal details, education timeline, and professional experience.
+- **Skills** – Tech stack displayed with icons and categories.
+- **Projects** – Filterable project gallery (JavaScript, React/Next.js, Full Stack, Android/iOS) with a dedicated detail page per project.
+- **Course Certificates** – Certificate cards with details.
+- **Contact** – Contact form wired to EmailJS, with client details optionally persisted via a Next.js API + MongoDB Atlas.
+- **Full SEO** – Metadata, Open Graph, and Twitter cards configured in the root layout.
+- **Animations** – Framer Motion powered fade/scroll transitions.
+- **Responsive** – Mobile-first Tailwind layout.
+
+## Tech Stack
+
+| Area        | Technology                                             |
+| ----------- | ------------------------------------------------------ |
+| Framework   | Next.js 13 (App Router), React 18                       |
+| Styling     | Tailwind CSS 3                                          |
+| State       | Redux Toolkit, React Redux                              |
+| Animation   | Framer Motion                                           |
+| Forms       | React Hook Form + EmailJS                               |
+| Database    | MongoDB Atlas (Mongoose)                                |
+| Icons       | React Icons                                             |
+| Package Mgr | pnpm                                                    |
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies and run the development server with pnpm:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Environment Variables
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Create a `.env.local` file in the project root:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```env
+# MongoDB connection string for storing contact form details
+MONGODB_URI=your_mongodb_atlas_connection_string
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+# EmailJS credentials for sending contact form emails
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
+```
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/                     # Next.js App Router pages & API routes
+│   ├── api/
+│   │   ├── add-client-details/   # POST – save contact form data to MongoDB
+│   │   └── client-details/       # GET  – fetch saved client details
+│   ├── about/
+│   ├── contact-us/
+│   ├── course-certificates/
+│   ├── projects/[id]/            # Dynamic project detail page
+│   ├── layout.js                 # Root layout, fonts, SEO metadata
+│   └── page.js                   # Home page
+├── components/              # Reusable UI components (Header, Footer, ProjectCard, etc.)
+├── Data/                    # Static data (projects, skills, experience)
+├── lib/db.js                # MongoDB / Mongoose connection helper
+├── model/model.js           # Mongoose schema (client details)
+├── store/                   # Redux store & slices
+└── styles/globals.css       # Global Tailwind styles
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+| Script         | Description                                     |
+| -------------- | ----------------------------------------------- |
+| `pnpm dev`     | Start the development server                    |
+| `pnpm build`   | Build the application for production            |
+| `pnpm start`   | Start the production server                     |
+| `pnpm lint`    | Run ESLint                                      |
+| `pnpm analyze` | Build with bundle analyzer (set `ANALYZE=true`) |
 
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Add your environment variables in the Vercel dashboard before deploying.
+
+Check out the [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

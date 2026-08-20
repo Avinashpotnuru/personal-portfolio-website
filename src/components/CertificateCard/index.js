@@ -1,7 +1,7 @@
 // third party imports
-import { motion } from "framer-motion";
 import { memo } from "react";
 import Image from "next/image";
+import MotionWrapper from "../MotionWrapper";
 
 const CertificateCard = ({ data, id }) => {
   const ANIMATION_DELAY_MULTIPLIER = 0.08;
@@ -12,7 +12,7 @@ const CertificateCard = ({ data, id }) => {
   const getAnimationDelay = (id) => id * ANIMATION_DELAY_MULTIPLIER;
 
   return (
-    <motion.div
+    <MotionWrapper
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{
@@ -45,7 +45,7 @@ const CertificateCard = ({ data, id }) => {
           Certification Link
         </a>
       </div>
-    </motion.div>
+    </MotionWrapper>
   );
 };
 

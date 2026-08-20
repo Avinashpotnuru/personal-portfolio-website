@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 // import axios from "axios";
 import Modal from "../UI/Model";
@@ -26,9 +28,14 @@ const DetailsPopup = () => {
 const postToBackend = () => {
     setLoading(true);
     emailjs
-      .send("service_hc0ggwy", "template_oz2wgll", details, {
-        publicKey: "et9hy-UW09sGANjfT",
-      })
+      .send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+        details,
+        {
+          publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
+        }
+      )
       .then(
         (result) => {
           setLoading(false);
