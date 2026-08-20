@@ -1,10 +1,10 @@
 import React, { memo } from "react";
 import { projectsData } from "@/src/Data";
-import { motion } from "framer-motion";
 import TextContainer from "../TextAnimationContainer";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import Link from "next/link";
 import ProjectCard from "../ProjectCard";
+import MotionWrapper from "../MotionWrapper";
 
 const MyProjects = () => {
   return (
@@ -14,7 +14,7 @@ const MyProjects = () => {
         className="text-2xl text-[#0863bf] font-roboto-slab md:text-5xl font-bold text-center mb-5 md:my-10"
       />
 
-      <motion.div
+      <MotionWrapper
         initial={{ opacity: 0, x: "-100vh" }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.8, duration: 1.2 }}
@@ -23,7 +23,7 @@ const MyProjects = () => {
         {projectsData?.slice(0, 8).map((item, idx) => (
           <ProjectCard data={item} key={idx} />
         ))}
-      </motion.div>
+      </MotionWrapper>
       <div className="flex items-center justify-center my-4 group ">
         <Link href={"/projects"} aria-label="View more projects">
           <div className="bg-[#0c7fb0] font-roboto-slab   hover:bg-[#0369a1] flex justify-center items-center space-x-2 text-white  py-2 px-4 rounded transition duration-700 ease-in-out ">

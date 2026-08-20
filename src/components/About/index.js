@@ -2,25 +2,26 @@ import { memo } from "react";
 import Image from "next/image";
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import { motion } from "framer-motion";
 import TextContainer from "../TextAnimationContainer";
+import MotionWrapper from "../MotionWrapper";
 import myProfile from "../../../public/my-profile.webp";
 
 const About = () => {
   return (
     <div className="flex flex-col sm:flex-row sm:w-[95%] lg:w-[92%] mx-auto justify-center items-center my-4 ">
-      <motion.div
+      <MotionWrapper
         initial={{ opacity: 0, scale: 0, x: "100vh" }}
         animate={{ opacity: 1, scale: 1, x: 0 }}
         transition={{ delay: 0.9, duration: 0.8 }}
         className="order-2 p-5 mx-auto sm:w-1/2 sm:order-1 md:p-2"
       >
-        <motion.h1
+        <MotionWrapper
+          as="h1"
           whileHover={{ scale: 1.2, originX: 0 }}
           className="my-1 text-base font-semibold uppercase"
         >
           hello,
-        </motion.h1>
+        </MotionWrapper>
 
         <TextContainer
           className="text-[#0863bf] typing-animation text-3xl font-roboto-slab   font-bold my-1 lg:text-[40px] lg:my-2"
@@ -52,9 +53,9 @@ const About = () => {
             <button>Download Resume</button>
           </a>
         </div>
-      </motion.div>
+      </MotionWrapper>
 
-      <motion.div
+      <MotionWrapper
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.4, duration: 0.5 }}
@@ -70,7 +71,7 @@ const About = () => {
             decoding="async"
           />
         
-      </motion.div>
+      </MotionWrapper>
     </div>
   );
 };

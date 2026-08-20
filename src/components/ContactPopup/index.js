@@ -1,5 +1,7 @@
 // third party imports
 
+"use client";
+
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
@@ -76,7 +78,7 @@ const ContactPopup = () => {
           <div className="flex flex-col w-full ">
             <label
               className="block my-3 text-sm font-bold text-gray-700"
-              for="firstName"
+              htmlFor="firstName"
             >
               FULL NAME
             </label>
@@ -84,6 +86,7 @@ const ContactPopup = () => {
               variants={inputVariants}
               initial="hidden"
               animate="visible"
+              id="firstName"
               type="text"
               className="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
               {...register("firstName", {

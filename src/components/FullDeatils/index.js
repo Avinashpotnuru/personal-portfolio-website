@@ -1,3 +1,5 @@
+"use client";
+
 import dynamic from "next/dynamic";
 import React, { useCallback, useState,useMemo } from "react";
 import Loader from "../Loader";

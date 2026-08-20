@@ -7,7 +7,7 @@ import myProfile from "../../../public/my-profile.webp";
 
 // third party imports
 
-import { motion } from "framer-motion";
+import MotionWrapper from "../MotionWrapper";
 
 const buttonVariants = {
   hover: {
@@ -22,7 +22,7 @@ const buttonVariants = {
 const MyDetails = () => {
   return (
     <div className="flex flex-col sm:flex-row sm:w-[90%] md:w-[98%] lg:w-[85%] mx-auto justify-center items-center my-4 ">
-      <motion.div
+      <MotionWrapper
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 1.1, duration: 1 }}
@@ -36,8 +36,8 @@ const MyDetails = () => {
           priority
           className=" h-full sm:h-auto sm:my-auto mx-auto object-fill"
         />
-      </motion.div>
-      <motion.div
+      </MotionWrapper>
+      <MotionWrapper
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 1.1, duration: 1 }}
@@ -63,16 +63,17 @@ const MyDetails = () => {
         </h1>
         <div className="  flex flex-col lg:flex-row justify-center lg:justify-around items-center my-3 w-[80%] lg:w-full  mx-auto ">
           <Link href={"/contact-us"}>
-            <motion.button
+            <MotionWrapper
+              as="button"
               variants={buttonVariants}
               whileHover="hover"
               className="button-background-move"
             >
               Contact Us
-            </motion.button>
+            </MotionWrapper>
           </Link>
         </div>
-      </motion.div>
+      </MotionWrapper>
     </div>
   );
 };

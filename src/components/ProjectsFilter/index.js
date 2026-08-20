@@ -1,3 +1,5 @@
+"use client";
+
 import ProjectCard from "../ProjectCard";
 import { tabs, projectsData } from "@/src/Data";
 import { motion } from "framer-motion";

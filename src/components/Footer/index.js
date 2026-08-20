@@ -2,10 +2,9 @@ import Link from "next/link";
 
 // third party imports
 
-import { motion } from "framer-motion";
-
 import { navLinks, socialLinks } from "@/src/Data";
 import { memo } from "react";
+import MotionWrapper from "../MotionWrapper";
 
 const iconVariants = {
   hover: {
@@ -31,7 +30,8 @@ const Footer = () => {
   ));
 
   const socialLinksMapped = socialLinks?.map((link) => (
-    <motion.a
+    <MotionWrapper
+      as="a"
       key={link.href}
       variants={iconVariants}
       whileHover="hover"
@@ -40,7 +40,7 @@ const Footer = () => {
       rel="noopener noreferrer"
     >
       {link.icon}
-    </motion.a>
+    </MotionWrapper>
   ));
 
   return (

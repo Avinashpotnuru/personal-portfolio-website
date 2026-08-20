@@ -6,7 +6,13 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 const nextConfig = withBundleAnalyzer({
   reactStrictMode: true,
   images: {
-    unoptimized: true, // for Netlify compatibility
+    unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "t3.ftcdn.net",
+      },
+    ],
   },
   eslint: {
     ignoreDuringBuilds: false,

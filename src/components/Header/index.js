@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import React, { useState, useEffect, memo } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
