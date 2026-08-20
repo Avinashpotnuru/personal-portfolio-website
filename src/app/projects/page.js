@@ -10,7 +10,7 @@ export const metadata = {
 const ProjectsPage = () => {
   return (
     <Fade>
-      <div className="mt-20 overflow-hidden">
+      <div className="overflow-hidden">
         <ProjectsFilter />
       </div>
     </Fade>

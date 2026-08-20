@@ -88,6 +88,10 @@ src/
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Add your environment variables in the Vercel dashboard before deploying.
-
 Check out the [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Deploy on Netlify
+
+This project is configured to deploy on Netlify via `netlify.toml`.
+
+> **Important:** Before deploying, add the environment variables listed in [Environment Variables](#environment-variables) (especially the `NEXT_PUBLIC_EMAILJS_*` values) in the **Netlify dashboard → Site settings → Environment variables**, then redeploy. `NEXT_PUBLIC_*` values are inlined into the client bundle **at build time**. If they are missing, the contact form's email request will fail with "Failed to send details" even though everything works locally.

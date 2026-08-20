@@ -7,8 +7,12 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        roboto: ["var(--font-roboto)", "sans-serif"],
-        "roboto-slab": ["var(--font-roboto-slab)", "serif"],
+        sans: ["var(--font-inter)", "sans-serif"],
+        inter: ["var(--font-inter)", "sans-serif"],
+        roboto: ["var(--font-inter)", "sans-serif"],
+        "space-grotesk": ["var(--font-space-grotesk)", "sans-serif"],
+        heading: ["var(--font-space-grotesk)", "sans-serif"],
+        "roboto-slab": ["var(--font-space-grotesk)", "sans-serif"],
         Lexend: ["var(--font-lexend)", "sans-serif"],
       },
       backgroundImage: {

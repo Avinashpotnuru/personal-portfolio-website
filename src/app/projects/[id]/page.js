@@ -5,7 +5,7 @@ import ProjectDetailPage from "@/src/components/ProjectDetailPage";
 
 const slugToPage = {
   "todo-list": pages.todolist,
-  movieszone: pages.moviesZone,
+  "movies-zone": pages.moviesZone,
   "movies-app": pages.moviesApp,
   restaurant: pages.RestaurantWebsite,
   "food-munch": pages.FoodMunch,

@@ -7,8 +7,8 @@ const ExperienceInfo = ({ val, index }) => (
       opacity: 0,
       translateX: index % 2 == 1 ? "-100vh" : "100vh",
     }}
-    whileInView={{ scale: 1, opacity: 1, translateX: 0 }}
-    transition={{ delay: 0.8, duration: 1.1 }}
+    animate={{ scale: 1, opacity: 1, translateX: 0 }}
+    transition={{ delay: 0.4, duration: 0.8 }}
     key={val.id}
     className="px-4 py-5 mx-4 border-2 border-gray-400 rounded-md"
   >
