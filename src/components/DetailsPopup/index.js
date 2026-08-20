@@ -26,16 +26,25 @@ const DetailsPopup = () => {
 
  
 const postToBackend = () => {
+    const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceID || !templateID || !publicKey) {
+      toast.error(
+        "Email service is not configured. Please add the EmailJS environment variables and redeploy."
+      );
+      return;
+    }
+
+    if (!details) {
+      toast.error("No contact details found. Please fill in the form again.");
+      return;
+    }
+
     setLoading(true);
     emailjs
-      .send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-        details,
-        {
-          publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
-        }
-      )
+      .send(serviceID, templateID, details, { publicKey })
       .then(
         (result) => {
           setLoading(false);
@@ -49,7 +58,7 @@ const postToBackend = () => {
         (error) => {
           setLoading(false);
           console.warn(error);
-          toast.error("Failed to send details");
+          toast.error(error?.text || "Failed to send details");
         },
       );
   };

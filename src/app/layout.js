@@ -1,20 +1,22 @@
-import { Lexend_Deca, Roboto, Roboto_Slab } from "next/font/google";
+import { Inter, Space_Grotesk, Lexend_Deca } from "next/font/google";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "@/src/components/Footer";
 import Header from "@/src/components/Header";
 import Providers from "@/src/components/providers";
+import ScrollToTop from "@/src/components/ScrollToTop";
 import "@/src/styles/globals.css";
 
-const roboto = Roboto({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  variable: "--font-roboto",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-inter",
   display: "swap",
 });
 
-const robotoSlab = Roboto_Slab({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-roboto-slab",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-space-grotesk",
   display: "swap",
 });
 
@@ -82,16 +84,17 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${roboto.variable} ${robotoSlab.variable} ${lexendDeca.variable}`}
+      className={`${inter.variable} ${spaceGrotesk.variable} ${lexendDeca.variable}`}
     >
       <body>
-        <div className="h-screen overflow-y-auto font-roboto">
+        <div className="h-screen overflow-y-auto font-roboto" id="scroll-container">
           <Providers>
             <Header />
             <main>{children}</main>
             <div className="self-end">
               <Footer />
             </div>
+            <ScrollToTop />
           </Providers>
         </div>
         <div id="modal" />

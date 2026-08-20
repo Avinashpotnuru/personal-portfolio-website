@@ -364,3 +364,55 @@ span {
   scrollbar-width: none;
   /* Firefox */
 }
+
+/* ===== Toast UI ===== */
+:root {
+  --toastify-color-dark: #061820;
+  --toastify-color-success: #0c7fb0;
+  --toastify-color-error: #ef4444;
+  --toastify-color-info: #0863bf;
+}
+
+.Toastify__toast {
+  font-family: var(--font-roboto), sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.Toastify__toast--dark {
+  background: rgba(6, 24, 32, 0.95);
+  border: 1px solid rgba(12, 127, 176, 0.35);
+  box-shadow: 0 12px 28px rgba(6, 24, 32, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.Toastify__toast--success {
+  border-left: 4px solid #0c7fb0;
+}
+
+.Toastify__toast--error {
+  border-left: 4px solid #ef4444;
+}
+
+.Toastify__toast-body {
+  color: #e2e8f0;
+  gap: 12px;
+}
+
+.Toastify__close-button {
+  color: #94a3b8;
+  opacity: 0.8;
+}
+
+.Toastify__close-button:hover {
+  color: #fff;
+  opacity: 1;
+}
+
+.Toastify__progress-bar {
+  height: 3px;
+  border-radius: 0 0 12px 12px;
+}

@@ -18,7 +18,7 @@ const SkillsComponent = () => {
       <div className="flex flex-col border-2 border-gray-500 rounded-md lg:py-10  w-[95%] mx-auto sm:w-[90%] ">
         <motion.h1
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 1.5, delay: 0.7 }}
           className="text-2xl font-medium my-3 md:my-6 text-[#0863bf] font-roboto-slab text-center"
         >

@@ -11,7 +11,7 @@ export const metadata = {
 const AboutPage = () => {
   return (
     <Fade>
-      <div className="mt-24">
+      <div className="">
         <MyDetails />
         <FullDeatils />
       </div>
