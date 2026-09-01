@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import { store } from "@/src/store/store";
 import Loader from "@/src/components/Loader";
 
@@ -20,11 +20,21 @@ const DetailsPopup = dynamic(() => import("@/src/components/DetailsPopup"), {
   loading: () => <Loader />,
 });
 
+const ContactPopupMount = () => {
+  const open = useSelector((state) => state.popSlice.contactPopup.status);
+  return open ? <ContactPopup /> : null;
+};
+
+const DetailsPopupMount = () => {
+  const open = useSelector((state) => state.popSlice.detailsPopup.status);
+  return open ? <DetailsPopup /> : null;
+};
+
 const Providers = ({ children }) => {
   return (
     <Provider store={store}>
-      <ContactPopup />
-      <DetailsPopup />
+      <ContactPopupMount />
+      <DetailsPopupMount />
       <ToastContainer
         position="top-right"
         autoClose={5000}

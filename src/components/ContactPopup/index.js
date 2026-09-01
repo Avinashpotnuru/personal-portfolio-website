@@ -6,24 +6,10 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 import Modal from "../UI/Model";
-import { motion } from "framer-motion";
 import { AiOutlineClose } from "react-icons/ai";
 
 import { closeContactPopup, openDetailsPopup } from "@/src/store/slices/popup";
 import TextContainer from "../TextAnimationContainer";
-
-const inputVariants = {
-  hidden: {
-    x: "-200vh",
-  },
-  visible: {
-    x: 0,
-    transition: {
-      delay: 0.9,
-      duration: 0.8,
-    },
-  },
-};
 
 const ContactPopup = () => {
   const dispatch = useDispatch();
@@ -58,37 +44,38 @@ const ContactPopup = () => {
       parentClasses={" flex justify-center items-center  w-full m-auto"}
       isOpen={contactToggle}
     >
-      <div className="relative bg-slate-200   w-[95%] min-h-[90%] sm:h-[500px] sm:w-[500px] flex flex-col justify-center items-center">
-        <div
+      <div className="relative bg-white w-[95%] min-h-[90%] sm:h-auto max-h-[92vh] overflow-y-auto sm:w-[500px] flex flex-col justify-center items-center rounded-2xl shadow-2xl border border-slate-200">
+        <button
+          type="button"
           onClick={handleClose}
-          className="absolute  top-7 right-7 hover:text-[20px]"
+          aria-label="Close contact form"
+          className="absolute top-5 right-5 text-2xl text-gray-500 hover:text-[#0863bf] hover:scale-110 transition-all duration-200 p-2"
         >
-          <AiOutlineClose />
-        </div>
+          <AiOutlineClose aria-hidden="true" />
+        </button>
         <TextContainer
           text="Contact Us"
-          className="text-3xl my-6 font-bold text-[#0863bf] "
+          className="text-3xl my-6 font-bold text-[#0863bf] font-roboto-slab"
         />
 
         <form
-          className="flex flex-col justify-center items-center  w-[80%]  "
+          className="flex flex-col justify-center items-center w-[85%] pb-8"
           onSubmit={handleSubmit(onSubmit)}
           noValidate
         >
-          <div className="flex flex-col w-full ">
+          <div className="flex flex-col w-full">
             <label
-              className="block my-3 text-sm font-bold text-gray-700"
+              className="block my-3 text-sm font-semibold text-gray-700"
               htmlFor="firstName"
             >
               FULL NAME
             </label>
-            <motion.input
-              variants={inputVariants}
-              initial="hidden"
-              animate="visible"
+            <input
               id="firstName"
               type="text"
-              className="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+              aria-invalid={errors.firstName ? "true" : "false"}
+              aria-describedby={errors.firstName ? "firstName-error" : undefined}
+              className="w-full px-3 py-2.5 leading-tight text-gray-800 border rounded-lg bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0c7fb0]/50 focus:border-[#0c7fb0] transition-all"
               {...register("firstName", {
                 required: {
                   value: true,
@@ -96,22 +83,26 @@ const ContactPopup = () => {
                 },
               })}
               placeholder="First name"
-              aria-label="Full Name"
             />
-            <p className="my-1 font-semibold text-red-600">
-              {errors.firstName?.message}
-            </p>
+            {errors.firstName && (
+              <p id="firstName-error" role="alert" className="my-1 font-semibold text-red-600">
+                {errors.firstName.message}
+              </p>
+            )}
           </div>
-          <div className="flex flex-col w-full ">
-            <label className="block my-3 text-sm font-bold text-gray-700">
+          <div className="flex flex-col w-full">
+            <label
+              className="block my-3 text-sm font-semibold text-gray-700"
+              htmlFor="email"
+            >
               EMAIL
             </label>
-            <motion.input
-              variants={inputVariants}
+            <input
               type="email"
-              initial="hidden"
-              animate="visible"
-              className="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+              id="email"
+              aria-invalid={errors.email ? "true" : "false"}
+              aria-describedby={errors.email ? "email-error" : undefined}
+              className="w-full px-3 py-2.5 leading-tight text-gray-800 border rounded-lg bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0c7fb0]/50 focus:border-[#0c7fb0] transition-all"
               {...register("email", {
                 required: {
                   value: true,
@@ -119,26 +110,34 @@ const ContactPopup = () => {
                 },
                 pattern: {
                   value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                  message: "Invalid email formate",
+                  message: "Invalid email format",
                 },
               })}
               placeholder="Enter your Email"
             />
-            <p className="my-1 font-semibold text-red-600">
-              {errors.email?.message}
-            </p>
+            {errors.email && (
+              <p id="email-error" role="alert" className="my-1 font-semibold text-red-600">
+                {errors.email.message}
+              </p>
+            )}
           </div>
 
-          <div className="flex flex-col w-full ">
-            <label className="block my-3 text-sm font-bold text-gray-700">
+          <div className="flex flex-col w-full">
+            <label
+              className="block my-3 text-sm font-semibold text-gray-700"
+              htmlFor="number"
+            >
               PHONE NUMBER
             </label>
 
-            <motion.input
-              variants={inputVariants}
-              initial="hidden"
-              animate="visible"
-              className="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+            <input
+              id="number"
+              type="tel"
+              inputMode="numeric"
+              autoComplete="tel"
+              aria-invalid={errors.number ? "true" : "false"}
+              aria-describedby={errors.number ? "number-error" : undefined}
+              className="w-full px-3 py-2.5 leading-tight text-gray-800 border rounded-lg bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0c7fb0]/50 focus:border-[#0c7fb0] transition-all"
               {...register("number", {
                 required: "Phone number is required",
                 validate: validatePhoneNumber,
@@ -148,22 +147,26 @@ const ContactPopup = () => {
             />
 
             {errors.number && (
-              <p className="my-1 font-semibold text-red-600">
+              <p id="number-error" role="alert" className="my-1 font-semibold text-red-600">
                 {errors.number.message}
               </p>
             )}
           </div>
 
-          <div className="flex flex-col w-full ">
-            <label className="block my-3 text-sm font-bold text-gray-700">
+          <div className="flex flex-col w-full">
+            <label
+              className="block my-3 text-sm font-semibold text-gray-700"
+              htmlFor="message"
+            >
               MESSAGE
             </label>
 
-            <motion.textarea
-              variants={inputVariants}
-              initial="hidden"
-              animate="visible"
-              className="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+            <textarea
+              id="message"
+              rows={4}
+              aria-invalid={errors.message ? "true" : "false"}
+              aria-describedby={errors.message ? "message-error" : undefined}
+              className="w-full px-3 py-2.5 leading-tight text-gray-800 border rounded-lg bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0c7fb0]/50 focus:border-[#0c7fb0] transition-all"
               {...register("message", {
                 required: {
                   value: true,
@@ -173,12 +176,14 @@ const ContactPopup = () => {
               placeholder="Enter your Message"
             />
 
-            <p className="my-1 font-semibold text-red-600">
-              {errors.message?.message}
-            </p>
+            {errors.message && (
+              <p id="message-error" role="alert" className="my-1 font-semibold text-red-600">
+                {errors.message.message}
+              </p>
+            )}
           </div>
 
-          <input className="submitbutton " type="submit" />
+          <button type="submit" className="submitbutton">Send Message</button>
         </form>
       </div>
     </Modal>

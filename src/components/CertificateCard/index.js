@@ -1,24 +1,15 @@
 // third party imports
 import { memo } from "react";
 import Image from "next/image";
-import MotionWrapper from "../MotionWrapper";
+import Reveal from "../Reveal";
 
 const CertificateCard = ({ data, id }) => {
-  const ANIMATION_DELAY_MULTIPLIER = 0.08;
+  const ANIMATION_DELAY_MULTIPLIER = 0.06;
   const IMAGE_DIMENSIONS = 500;
-  const ANIMATION_DURATION = 0.5; // Assuming this was defined elsewhere
-
-  // Simple calculation without useMemo
-  const getAnimationDelay = (id) => id * ANIMATION_DELAY_MULTIPLIER;
 
   return (
-    <MotionWrapper
-      initial={{ opacity: 0, scale: 0 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{
-        delay: getAnimationDelay(id),
-        duration: ANIMATION_DURATION,
-      }}
+    <Reveal
+      delay={id * ANIMATION_DELAY_MULTIPLIER}
       className="card h-[260px] sm:h-auto md:h-[250px] lg:h-[320px] xl:h-[250px] px-5"
     >
       <Image
@@ -28,10 +19,11 @@ const CertificateCard = ({ data, id }) => {
         alt={data?.name || "Certificate"}
         priority={id === 0}
         loading={id === 0 ? undefined : "lazy"}
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
       />
 
       <div className="flex flex-col items-center justify-center mx-auto info">
-        <h1 className="my-5 text-2xl font-bold text-center text-black font-Lexend">
+        <h1 className="my-5 text-xl font-bold text-center text-white font-Lexend">
           {data?.name || "Certificate Name"}
         </h1>
 
@@ -39,13 +31,13 @@ const CertificateCard = ({ data, id }) => {
           href={data?.link || "#"}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-black duration-500 hover:font-medium hover:border-t-2 hover:border-b-2 hover:py-1 hover:border-black hover:transition-all"
+          className="inline-flex items-center text-white bg-white/15 hover:bg-white/25 px-4 py-2 rounded-md font-medium text-sm transition-colors duration-200"
           aria-label={`View ${data?.name || "Certificate"} details`}
         >
           Certification Link
         </a>
       </div>
-    </MotionWrapper>
+    </Reveal>
   );
 };
 

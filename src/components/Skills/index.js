@@ -1,62 +1,68 @@
 import React, { memo } from "react";
 
-import { motion } from "framer-motion";
+import Reveal from "../Reveal";
 import Image from "next/image";
 import { skillsData } from "@/src/Data";
 
+const skillsCount = Array.isArray(skillsData) ? skillsData.length : 0;
+
 const SkillsComponent = () => {
   return (
-    <div className="flex flex-col items-center justify-center w-full mx-auto my-5 overflow-hidden">
-      <motion.h1
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5, delay: 0.7 }}
-        className="text-3xl font-medium my-3 md:my-6 font-roboto-slab text-[#0863bf]"
-      >
-        Technical Skills
-      </motion.h1>
-      <div className="flex flex-col border-2 border-gray-500 rounded-md lg:py-10  w-[95%] mx-auto sm:w-[90%] ">
-        <motion.h1
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5, delay: 0.7 }}
-          className="text-2xl font-medium my-3 md:my-6 text-[#0863bf] font-roboto-slab text-center"
+    <section className="mx-auto w-full max-w-5xl px-6 py-12 md:px-10 md:py-20">
+      <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <Reveal>
+            <span className="section-kicker mb-3">Capabilities</span>
+          </Reveal>
+          <Reveal
+            as="h1"
+            className="mt-3 text-3xl font-bold tracking-tight text-[#0863bf] font-roboto-slab md:text-5xl"
+          >
+            Technical Skills<span className="text-[#0c7fb0]">.</span>
+          </Reveal>
+        </div>
+
+        <Reveal
+          delay={0.1}
+          className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-gray-400 tabular-nums"
         >
-          Skills
-        </motion.h1>
-        <div className="grid w-full grid-cols-3 sm:grid-cols-5 lg:grid-cols-8">
+          <span aria-hidden="true" className="h-px w-8 bg-slate-300" />
+          {skillsCount} Tools &amp; Technologies
+        </Reveal>
+      </div>
+
+      <Reveal className="skill-grid mt-10 md:mt-16">
+        <div className="grid w-full grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 lg:grid-cols-5">
           {Array.isArray(skillsData) && skillsData.length > 0
             ? skillsData.map((item, idx) => (
-                <motion.div
-                  initial={{
-                    scale: 0,
-                    opacity: 0,
-                    translateX: idx % 2 == 1 ? "-100vh" : "100vh",
-                  }}
-                  animate={{ scale: 1, opacity: 1, translateX: 0 }}
-                  transition={{ delay: idx * 0.2, duration: idx * 0.3 }}
+                <div
                   key={idx}
-                  className="flex flex-col items-center justify-center p-9"
+                  style={{ "--i": Math.min(idx, 9) }}
+                  className="skill-tile group flex flex-col items-center gap-3 rounded-xl border border-slate-200 bg-white p-5 shadow-sm"
                 >
-                  <Image
-                    width={40}
-                    height={40}
-                    src={`/skills/skills${idx + 1}.png`}
-                    alt={`skills${idx + 1}`}
-                    priority
-                  />
-                  <h1 className="my-2 font-semibold text-center">{item}</h1>
-                </motion.div>
+                  <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#eef6fb] p-2 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6">
+                    <Image
+                      width={40}
+                      height={40}
+                      src={`/skills/skills${idx + 1}.png`}
+                      alt={item}
+                      loading="lazy"
+                      sizes="40px"
+                      className="h-auto w-auto object-contain"
+                    />
+                  </span>
+                  <span className="text-center text-sm font-semibold text-gray-700 transition-colors duration-300 group-hover:text-[#0863bf]">
+                    {item}
+                  </span>
+                </div>
               ))
             : null}
         </div>
-      </div>
-    </div>
+      </Reveal>
+    </section>
   );
 };
 
 const Skills = memo(SkillsComponent);
-
-
 
 export default Skills;

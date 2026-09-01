@@ -74,16 +74,18 @@ const postToBackend = () => {
       isOpen={detailToggle}
       parentClasses={"flex justify-center items-center  w-full m-auto"}
     >
-      <div className="bg-white flex flex-col justify-center items-center rounded-lg shadow-lg h-[450px] w-[80%] sm:w-[50%] lg:w-[30%]  relative">
-        <div
+      <div className="bg-white flex flex-col justify-center items-center rounded-2xl shadow-2xl w-[88%] sm:w-[50%] lg:w-[30%] relative p-6 border border-slate-200">
+        <button
+          type="button"
           onClick={() => {
             dispatch(closeDetailsPopup());
             setToggle(false);
           }}
-          className="absolute bg top-4 right-4 sm:top-7 sm:right-7"
+          aria-label="Close details"
+          className="absolute top-4 right-4 sm:top-5 sm:right-5 text-2xl text-gray-500 hover:text-[#0863bf] hover:scale-110 transition-all duration-200 p-2"
         >
-          <AiOutlineClose />
-        </div>
+          <AiOutlineClose aria-hidden="true" />
+        </button>
 
         <div className="p-6 sm:p-4 mx-auto w-[80%]">
           {!isToggle ? (
