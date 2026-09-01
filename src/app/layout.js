@@ -8,22 +8,23 @@ import "@/src/styles/globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
   variable: "--font-inter",
   display: "swap",
+  adjustFontFallback: true,
 });
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
   variable: "--font-space-grotesk",
   display: "swap",
+  adjustFontFallback: true,
 });
 
 const lexendDeca = Lexend_Deca({
   subsets: ["latin"],
   variable: "--font-lexend",
   display: "swap",
+  adjustFontFallback: true,
 });
 
 export const metadata = {

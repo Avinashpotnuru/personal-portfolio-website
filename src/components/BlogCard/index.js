@@ -1,58 +1,68 @@
-"use client";
-
 import React from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import Reveal from "../Reveal";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { BiCalendar } from "react-icons/bi";
 
 const BlogCard = React.memo(({ data, idx = 0 }) => {
   if (!data) return null;
 
-  const { title, description, slug, tags = [], date } = data;
+  const { title, description, slug, tags = [], date, readTime } = data;
 
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 60 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6, delay: (idx % 3) * 0.12 }}
-      whileHover={{ y: -6 }}
-      className="flex flex-col justify-between bg-white border rounded-lg shadow-sm border-slate-200 hover:shadow-lg transition-shadow duration-300 p-6"
+    <Reveal
+      as="article"
+      delay={(idx % 3) * 0.1}
+      className="group flex flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#0c7fb0]/30 hover:shadow-xl hover:shadow-[#0c7fb0]/10"
     >
-      <div>
-        <div className="flex flex-wrap gap-2 mb-3">
-          {tags.map((tag, i) => (
-            <span
-              key={i}
-              className="px-2 py-0.5 text-xs font-semibold text-[#0c7fb0] bg-[#e6f4fb] rounded-full"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-        <h2 className="mb-2 text-lg font-bold text-[#0863bf] font-roboto-slab">
+      <div className="flex flex-wrap items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-gray-400">
+        <span className="font-roboto-slab text-base font-bold leading-none tracking-tight text-[#0c7fb0] tabular-nums">
+          {String(idx + 1).padStart(2, "0")}
+        </span>
+        <span aria-hidden="true" className="h-px w-4 bg-slate-200" />
+        {readTime && <span>{readTime}</span>}
+        {tags.length > 0 && (
+          <span className="ml-auto flex flex-wrap justify-end gap-1.5 normal-case tracking-normal">
+            {tags.slice(0, 2).map((tag, i) => (
+              <span
+                key={i}
+                className="rounded-full bg-[#e6f4fb] px-2 py-0.5 text-[11px] font-semibold text-[#0c7fb0]"
+              >
+                {tag}
+              </span>
+            ))}
+          </span>
+        )}
+      </div>
+
+      <div className="flex flex-1 flex-col">
+        <h2 className="mt-3 font-roboto-slab text-xl font-bold leading-snug text-[#0b2230] transition-colors duration-300 group-hover:text-[#0863bf]">
           {title}
         </h2>
-        <p className="text-sm text-gray-600 line-clamp-3">{description}</p>
+        <p className="mt-2 text-sm leading-relaxed text-gray-600 line-clamp-3">
+          {description}
+        </p>
       </div>
-      <div className="mt-4">
-        <div className="flex items-center justify-between">
-          {date && (
-            <span className="flex items-center gap-1 text-xs text-gray-500">
-              <BiCalendar /> {date}
-            </span>
-          )}
-          <Link
-            href={`/blog/${slug}`}
-            className="inline-flex items-center gap-1 text-sm font-semibold text-[#0c7fb0] hover:text-[#0863bf] transition-colors"
-            aria-label={`Read article: ${title}`}
-          >
-            Read article <AiOutlineArrowRight />
-          </Link>
-        </div>
+
+      <div className="mt-5 flex items-center justify-between border-t border-slate-100 pt-4">
+        {date && (
+          <span className="flex items-center gap-1 text-xs text-gray-500">
+            <BiCalendar aria-hidden="true" /> {date}
+          </span>
+        )}
+        <Link
+          href={`/blog/${slug}`}
+          className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#0c7fb0] transition-colors hover:text-[#0863bf]"
+          aria-label={`Read article: ${title}`}
+        >
+          Read article
+          <AiOutlineArrowRight
+            className="transition-transform duration-300 group-hover:translate-x-1"
+            aria-hidden="true"
+          />
+        </Link>
       </div>
-    </motion.article>
+    </Reveal>
   );
 });
 

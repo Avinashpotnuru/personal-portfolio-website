@@ -10,7 +10,7 @@ export const metadata = {
 const ContactUsPage = () => {
   return (
     <Fade>
-      <div className="min-h-[65vh] md:flex md:items-center md:justify-center w-full">
+      <div className="min-h-[65vh] w-full">
         <Contact />
       </div>
     </Fade>

@@ -1,36 +1,48 @@
 import { memo } from "react";
 import { FaSchool, FaCalendarAlt } from "react-icons/fa";
 import { HiAcademicCap } from "react-icons/hi";
-import { motion } from "framer-motion";
+import Reveal from "../Reveal";
 import { TiLocation } from "react-icons/ti";
 
 const EducationDetailComponent = ({ val, idx }) => (
-  <motion.div
-    initial={{ x: "-100vh" }}
-    animate={{ x: 0 }}
-    transition={{ duration: 0.7, delay: idx * 0.4 }}
-    key={idx}
-    className="p-3"
+  <Reveal
+    delay={(idx % 3) * 0.08}
+    className="group flex flex-col gap-5 py-7 sm:flex-row sm:items-center sm:justify-between sm:gap-8"
   >
-    <div className="flex items-center my-2 lg:my-3">
-      <FaSchool className="sm:text-[30px] mx-4" />
-      <h1 className="text-[#0863bf] font-bold font-roboto-slab text-lg sm:text-xl">
-        {val.name}
-      </h1>
+    <div className="flex items-start gap-4 sm:gap-5">
+      <span
+        aria-hidden="true"
+        className="mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#eef6fb] text-[#0c7fb0] transition-colors duration-300 group-hover:bg-[#0c7fb0] group-hover:text-white"
+      >
+        <FaSchool
+          size={20}
+          className="transition-transform duration-300 group-hover:-rotate-12"
+        />
+      </span>
+
+      <div>
+        <h3 className="text-lg font-bold text-[#0b2230] font-roboto-slab transition-colors duration-300 group-hover:text-[#0863bf]">
+          {val.name}
+        </h3>
+        <p className="mt-1.5 flex items-center gap-2 text-sm font-medium text-gray-600">
+          <HiAcademicCap
+            aria-hidden="true"
+            className="shrink-0 text-[#0c7fb0]"
+          />
+          {val.course}
+        </p>
+        <p className="mt-1 flex items-center gap-2 text-sm text-gray-500">
+          <TiLocation aria-hidden="true" className="shrink-0 text-[#0c7fb0]" />
+          {val.location}
+        </p>
+      </div>
     </div>
-    <div className="flex items-center">
-      <FaCalendarAlt className="sm:text-[30px] mx-4" />
-      <h1>{val.duration}</h1>
-    </div>
-    <div className="flex items-center my-2 lg:my-3">
-      <HiAcademicCap className="sm:text-[30px] mx-4" />
-      <h1 className="text-base font-semibold sm:text-lg">{val.course}</h1>
-    </div>
-    <div className="flex items-center">
-      <TiLocation className="sm:text-[30px] mx-4" />
-      <h1>{val.location}</h1>
-    </div>
-  </motion.div>
+
+    <span className="inline-flex shrink-0 items-center gap-2 self-start rounded-full border border-slate-200 bg-slate-50 px-3.5 py-1.5 text-xs font-semibold tabular-nums text-gray-500 transition-colors duration-300 group-hover:border-[#0c7fb0]/30 group-hover:bg-[#eef6fb] group-hover:text-[#0863bf] sm:self-center">
+      <FaCalendarAlt aria-hidden="true" className="text-[#0c7fb0]" />
+      {val.duration}
+    </span>
+  </Reveal>
 );
 
 const EducationDetail = memo(EducationDetailComponent);

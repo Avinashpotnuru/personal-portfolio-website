@@ -1,120 +1,282 @@
+
 "use client";
 
 import Link from "next/link";
 import React, { useState, useEffect, memo } from "react";
-import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
-import { RiInformationLine, RiContactsBookLine } from "react-icons/ri";
+import {
+  AiOutlineClose,
+  AiOutlineMenu,
+} from "react-icons/ai";
+import {
+  RiInformationLine,
+  RiContactsBookLine,
+} from "react-icons/ri";
 import { FaRegUser } from "react-icons/fa";
 import { CiMedal, CiPen } from "react-icons/ci";
-import { motion } from "framer-motion";
+import { HiOutlineBriefcase } from "react-icons/hi";
+import { FiArrowUpRight } from "react-icons/fi";
 import { usePathname } from "next/navigation";
-import TextContainer from "../TextAnimationContainer";
+
 const Links = [
-  { name: "HOME", link: "/", icon: <FaRegUser /> },
-  { name: "ABOUT", link: "/about", icon: <RiInformationLine /> },
-  { name: "CERTIFICATES", link: "/course-certificates", icon: <CiMedal /> },
-  { name: "BLOG", link: "/blog", icon: <CiPen /> },
-  { name: "CONTACT", link: "/contact-us", icon: <RiContactsBookLine /> },
+  {
+    name: "Home",
+    link: "/",
+    icon: <FaRegUser />,
+  },
+  {
+    name: "About",
+    link: "/about",
+    icon: <RiInformationLine />,
+  },
+  {
+    name: "Projects",
+    link: "/projects",
+    icon: <HiOutlineBriefcase />,
+  },
+  {
+    name: "Certificates",
+    link: "/course-certificates",
+    icon: <CiMedal />,
+  },
+  {
+    name: "Blog",
+    link: "/blog",
+    icon: <CiPen />,
+  },
+  {
+    name: "Contact",
+    link: "/contact-us",
+    icon: <RiContactsBookLine />,
+  },
 ];
 
 const Header = () => {
   const path = usePathname();
+
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    const container =
+      document.getElementById("scroll-container");
 
-    const container = document.getElementById("scroll-container");
     if (!container) return;
 
     const handleScroll = () => {
-      setScrolled(container.scrollTop > window.innerHeight * 0.3);
+      const maxScroll =
+        container.scrollHeight - container.clientHeight;
+
+      if (maxScroll <= 0) {
+        setScrollProgress(0);
+        return;
+      }
+
+      const progress = Math.min(
+        container.scrollTop / maxScroll,
+        1
+      );
+
+      setScrollProgress(progress);
     };
 
     handleScroll();
-    container.addEventListener("scroll", handleScroll, { passive: true });
-    return () => container.removeEventListener("scroll", handleScroll);
+
+    container.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
+
+    return () => {
+      container.removeEventListener(
+        "scroll",
+        handleScroll
+      );
+    };
   }, []);
+
+  // Maximum top border = 3px
+  const borderWidth = Math.min(
+    scrollProgress * 3,
+    3
+  );
+
+  const scrolled = scrollProgress > 0.05;
+
+  const isActive = (link) =>
+    path === link;
 
   return (
     <header
-      className={`sticky top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      style={{
+        borderTopWidth: `${borderWidth}px`,
+      }}
+      className={`sticky top-0 left-0 right-0 z-50 border-b border-t backdrop-blur-md transition-all duration-200 ${
         scrolled
-          ? "bg-[#061820] text-white shadow-lg backdrop-blur-md"
-          : "bg-white text-black"
+          ? "border-white/10 bg-[#061820]/90 text-white shadow-lg shadow-[#0b2230]/20"
+          : "border-slate-100 bg-white/80 text-[#0b2230] shadow-sm"
       }`}
     >
-      <div className="flex flex-wrap items-center justify-between py-4 md:px-10 px-7">
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-5 py-3.5 md:px-10">
+
         {/* Logo */}
-        <div className="flex items-center text-2xl font-bold cursor-pointer">
-          <Link href={"/"}>
-            <TextContainer
-              text="Avinash"
-              className={`font-roboto-slab font-extrabold ${
-                scrolled ? "text-white" : "text-[#0863bf]"
-              }`}
+        <Link
+          href="/"
+          aria-label="Avinash Potnuru — Home"
+          className={`font-roboto-slab text-2xl font-extrabold tracking-tight transition-colors duration-300 ${
+            scrolled
+              ? "text-white"
+              : "text-[#061820]"
+          }`}
+        >
+          Avinash
+          <span className="text-[#0c7fb0]">
+            .
+          </span>
+        </Link>
+
+        {/* Desktop Menu */}
+        <nav className="items-center hidden gap-1 md:flex">
+          {Links.map((link) => {
+            const active = isActive(link.link);
+
+            return (
+              <Link
+                key={link.link}
+                href={link.link}
+                aria-current={
+                  active ? "page" : undefined
+                }
+                className={`relative rounded-md px-3 py-2 text-[13px] font-semibold uppercase tracking-[0.14em] transition-colors duration-300 after:absolute after:bottom-0.5 after:left-3 after:right-3 after:h-[2px] after:origin-center after:rounded-full after:bg-[#0c7fb0] after:transition-transform after:duration-300 ${
+                  active
+                    ? "text-[#0c7fb0] after:scale-x-100"
+                    : `after:scale-x-0 hover:after:scale-x-100 ${
+                        scrolled
+                          ? "text-slate-200 hover:text-white"
+                          : "text-gray-600 hover:text-[#0c7fb0]"
+                      }`
+                }`}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
+        </nav>
+
+        <div className="flex items-center gap-2">
+
+          {/* Desktop CTA */}
+          <Link
+            href="/contact-us"
+            className="group hidden items-center gap-1.5 rounded-full bg-[#0c7fb0] px-5 py-2.5 text-[13px] font-semibold text-white transition-all duration-300 hover:bg-[#0863bf] hover:shadow-lg hover:shadow-[#0c7fb0]/30 md:inline-flex"
+          >
+            Let&apos;s Talk
+
+            <FiArrowUpRight
+              aria-hidden="true"
+              className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
             />
           </Link>
+
+          {/* Mobile Menu Button */}
+          <button
+            type="button"
+            onClick={() => setOpen(!open)}
+            aria-expanded={open}
+            aria-controls="primary-nav"
+            aria-label={
+              open
+                ? "Close menu"
+                : "Open menu"
+            }
+            className={`rounded-lg p-2 text-2xl transition-colors duration-300 md:hidden ${
+              scrolled
+                ? "text-white"
+                : "text-[#0b2230]"
+            }`}
+          >
+            {!open ? (
+              <AiOutlineMenu
+                aria-hidden="true"
+              />
+            ) : (
+              <AiOutlineClose
+                aria-hidden="true"
+              />
+            )}
+          </button>
         </div>
+      </div>
 
-        {/* Mobile Menu Button */}
-        <div
-          onClick={() => setOpen(!open)}
-          className="text-2xl transition-all duration-500 cursor-pointer md:hidden"
-        >
-          {!open ? <AiOutlineMenu /> : <AiOutlineClose />}
-        </div>
+      {/* Mobile Menu Panel */}
+      <ul
+        id="primary-nav"
+        className={`overflow-hidden transition-all duration-300 ease-in-out md:hidden ${
+          open
+            ? "max-h-[600px] opacity-100"
+            : "max-h-0 opacity-0"
+        }`}
+      >
+        {Links.map((link) => {
+          const active = isActive(link.link);
 
-        {/* Menu Links */}
-        <ul
-          className={`w-full md:w-auto flex flex-col md:flex-row md:items-center bg-white md:bg-transparent overflow-hidden md:overflow-visible transition-all duration-500 ease-in ${
-            open ? "max-h-[480px] mt-4" : "max-h-0 mt-0"
-          } md:max-h-none md:mt-0`}
-        >
-          {Links.map((link, idx) => (
-            <li
-              key={idx}
-              className="flex items-center gap-3 md:gap-0 md:items-baseline px-7 py-4 md:px-0 md:py-0 hover:bg-slate-50 md:hover:bg-transparent"
-            >
-              {/* Mobile Icons */}
-              <div className="md:hidden text-[21px] text-[#0c7fb0] transition ease-in-out delay-150 hover:scale-105">
-                {link.icon}
-              </div>
-
-              {/* Animated Link */}
-              <motion.div
-                initial={{ y: -100 }}
-                animate={{ y: 0 }}
-                transition={{
-                  delay: idx * 0.1,
-                  duration: 0.6,
-                  type: "spring",
-                }}
-                onClick={() => setOpen(false)}
-                className={`ml-2 md:ml-8 text-lg md:my-0 font-roboto ${
-                  path === link.link
-                    ? "sm:border-[#0c7fb0] sm:border-b-2 font-bold pb-1"
+          return (
+            <li key={link.link}>
+              <Link
+                href={link.link}
+                onClick={() =>
+                  setOpen(false)
+                }
+                aria-current={
+                  active ? "page" : undefined
+                }
+                className={`flex w-full items-center gap-3 border-b px-5 py-3.5 transition-colors ${
+                  scrolled
+                    ? "border-white/10 text-slate-200 hover:text-white"
+                    : "border-slate-100 text-gray-700 hover:text-[#0863bf]"
+                } ${
+                  active
+                    ? "border-l-2 border-l-[#0c7fb0] bg-[#0c7fb0]/10 pl-[18px] text-[#0c7fb0]"
                     : ""
                 }`}
               >
-                <Link
-                  href={link.link}
-                  className={`duration-500 hover:text-gray-400 ${
-                    scrolled
-                      ? "text-white max-md:text-gray-700"
-                      : "text-gray-800"
+                <span
+                  aria-hidden="true"
+                  className={`text-[18px] ${
+                    active
+                      ? "text-[#0c7fb0]"
+                      : "text-[#0c7fb0]/70"
                   }`}
                 >
+                  {link.icon}
+                </span>
+
+                <span className="text-sm font-semibold uppercase tracking-[0.14em]">
                   {link.name}
-                </Link>
-              </motion.div>
+                </span>
+              </Link>
             </li>
-          ))}
-        </ul>
-      </div>
+          );
+        })}
+
+        {/* Mobile CTA */}
+        <li className="px-5 py-4">
+          <Link
+            href="/contact-us"
+            onClick={() =>
+              setOpen(false)
+            }
+            className="flex items-center justify-center gap-1.5 rounded-full bg-[#0c7fb0] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#0863bf]"
+          >
+            Let&apos;s Talk
+
+            <FiArrowUpRight
+              aria-hidden="true"
+            />
+          </Link>
+        </li>
+      </ul>
     </header>
   );
 };
 
 export default memo(Header);
+
