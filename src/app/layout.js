@@ -88,6 +88,26 @@ export default function RootLayout({ children }) {
       className={`${inter.variable} ${spaceGrotesk.variable} ${lexendDeca.variable}`}
     >
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Avinash Potnuru",
+              jobTitle: "Frontend Developer",
+              description:
+                "Experienced React.js Frontend Developer with 5+ years of experience building scalable, responsive, and high-performance web applications using React.js, Next.js, TypeScript, Redux Toolkit, Tailwind CSS, and REST APIs.",
+              url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
+              sameAs: [
+                "https://github.com/Avinashpotnuru",
+                "https://www.linkedin.com/in/avinash-potnuru/",
+              ],
+              email: "potnuruavinash111@gmail.com",
+              telephone: "+918919016096",
+            }),
+          }}
+        />
         <div className="h-screen overflow-y-auto font-roboto" id="scroll-container">
           <Providers>
             <Header />

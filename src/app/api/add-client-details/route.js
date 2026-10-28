@@ -1,3 +1,4 @@
+import 'server-only';
 import { NextResponse } from "next/server";
 import { connectToDatabase } from "@/src/lib/db";
 import { Details } from "@/src/model/model";
@@ -27,3 +28,4 @@ export async function POST(request) {
     );
   }
 }
+export const dynamic = 'force-dynamic';
