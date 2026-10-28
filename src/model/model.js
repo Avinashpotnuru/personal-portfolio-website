@@ -1,3 +1,4 @@
+import 'server-only';
 const mongoose = require("mongoose");
 
 const clientSchema = new mongoose.Schema({

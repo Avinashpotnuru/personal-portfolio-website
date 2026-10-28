@@ -1,3 +1,4 @@
+import 'server-only';
 import { NextResponse } from "next/server";
 import { connectToDatabase } from "@/src/lib/db";
 import { Details } from "@/src/model/model";
@@ -15,3 +16,4 @@ export async function GET() {
     );
   }
 }
+export const dynamic = 'force-dynamic';
